@@ -8,14 +8,6 @@ import java.util.Collection;
 @Table(name="spot")
 public class Spot implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
-
-    @Column(name="spot_id", nullable = false)
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "Composition",
-            joinColumns = { @JoinColumn(name = "spot_id") },
-            inverseJoinColumns = { @JoinColumn(name = "topo_id") }
-    )
     private Integer spotId;
     @Column(name="nom",nullable = false,length = 50)
     private String nom;
@@ -29,11 +21,12 @@ public class Spot implements Serializable {
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;
-
     @OneToMany(mappedBy = "commentaire")
     private Collection<Commentaire> commentaires;
     @OneToMany(mappedBy = "secteur")
     private Collection<Secteur> secteurs;
+    @ManyToMany(mappedBy = "spots")
+    private Collection<Topo> topos;
 
     public Integer getSpotId() {
         return spotId;
@@ -99,6 +92,14 @@ public class Spot implements Serializable {
         this.secteurs = secteurs;
     }
 
+    public Collection<Topo> getTopos() {
+        return topos;
+    }
+
+    public void setTopos(Collection<Topo> topos) {
+        this.topos = topos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +107,7 @@ public class Spot implements Serializable {
 
         Spot spot = (Spot) o;
 
+        if (!topos.equals(spot.topos)) return false;
         if (!spotId.equals(spot.spotId)) return false;
         if (!nom.equals(spot.nom)) return false;
         if (!localisation.equals(spot.localisation)) return false;
@@ -119,7 +121,8 @@ public class Spot implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = spotId.hashCode();
+        int result = topos.hashCode();
+        result = 31 * result + spotId.hashCode();
         result = 31 * result + nom.hashCode();
         result = 31 * result + localisation.hashCode();
         result = 31 * result + descriptif.hashCode();

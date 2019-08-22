@@ -14,8 +14,8 @@ public class Commentaire implements Serializable {
     private String commentaire;
     @Column (name = "date",nullable = false)
     private Date date;
-    @Column (name = "user_id",nullable = false)
 
+    @Column (name = "user_id",nullable = false)
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;

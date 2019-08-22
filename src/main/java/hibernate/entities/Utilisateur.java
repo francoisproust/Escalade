@@ -15,6 +15,7 @@ public class Utilisateur implements Serializable {
     private Collection<Commentaire> commentaires;
     @OneToMany(mappedBy = "spots")
     private Collection<Spot> spots;
+
     @OneToMany(mappedBy = "topo")
     private Collection<Topo> topos;
 

@@ -2,19 +2,20 @@ package hibernate.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name="topo")
 public class Topo implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
-    @Column (name="topo_id")
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "Composition",
+            name = "composition",
             joinColumns = { @JoinColumn(name = "topo_id") },
             inverseJoinColumns = { @JoinColumn(name = "spot_id") }
     )
+    private Collection<Spot> spots;
     private Integer topoId;
     @Column (name = "nom",nullable = false,length = 50)
     private String nom;
@@ -24,7 +25,7 @@ public class Topo implements Serializable {
     private Date parution;
     @Column (name="disponibilite",nullable = false)
     private Boolean disponibilite;
-    @Column(name = "user_id",nullable = false)
+
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;
@@ -77,6 +78,14 @@ public class Topo implements Serializable {
         this.userId = userId;
     }
 
+    public Collection<Spot> getSpots() {
+        return spots;
+    }
+
+    public void setSpots(Collection<Spot> spots) {
+        this.spots = spots;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,6 +93,7 @@ public class Topo implements Serializable {
 
         Topo topo = (Topo) o;
 
+        if (!spots.equals(topo.spots)) return false;
         if (!topoId.equals(topo.topoId)) return false;
         if (!nom.equals(topo.nom)) return false;
         if (!isbn.equals(topo.isbn)) return false;
@@ -95,7 +105,8 @@ public class Topo implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = topoId.hashCode();
+        int result = spots.hashCode();
+        result = 31 * result + topoId.hashCode();
         result = 31 * result + nom.hashCode();
         result = 31 * result + isbn.hashCode();
         result = 31 * result + parution.hashCode();
