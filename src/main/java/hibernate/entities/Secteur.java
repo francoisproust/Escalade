@@ -16,9 +16,11 @@ public class Secteur implements Serializable {
     @Column (name = "designation",nullable = false,length = 255)
     private String designation;
 
+    @Column(name = "spot_id",nullable = false)
     @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
     @ManyToOne
     private Spot spotId;
+
     @OneToMany(mappedBy = "voie")
     private Collection<Voie> voies;
 
@@ -54,6 +56,14 @@ public class Secteur implements Serializable {
         this.spotId = spotId;
     }
 
+    public Collection<Voie> getVoies() {
+        return voies;
+    }
+
+    public void setVoies(Collection<Voie> voies) {
+        this.voies = voies;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,7 +74,9 @@ public class Secteur implements Serializable {
         if (!secteurId.equals(secteur.secteurId)) return false;
         if (!nom.equals(secteur.nom)) return false;
         if (!designation.equals(secteur.designation)) return false;
-        return spotId.equals(secteur.spotId);
+        if (!spotId.equals(secteur.spotId)) return false;
+        return voies.equals(secteur.voies);
+
     }
 
     @Override
@@ -73,6 +85,7 @@ public class Secteur implements Serializable {
         result = 31 * result + nom.hashCode();
         result = 31 * result + designation.hashCode();
         result = 31 * result + spotId.hashCode();
+        result = 31 * result + voies.hashCode();
         return result;
     }
 }

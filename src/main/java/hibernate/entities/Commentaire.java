@@ -20,6 +20,20 @@ public class Commentaire implements Serializable {
     @ManyToOne
     private Utilisateur userId;
 
+    @Column(name="spot_id",nullable = false)
+    @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
+    @ManyToOne
+    private Spot spotId;
+
+
+    public Spot getSpotId() {
+        return spotId;
+    }
+
+    public void setSpotId(Spot spotId) {
+        this.spotId = spotId;
+    }
+
     public Integer getComId() {
         return comId;
     }
@@ -62,7 +76,9 @@ public class Commentaire implements Serializable {
         if (!comId.equals(that.comId)) return false;
         if (!commentaire.equals(that.commentaire)) return false;
         if (!date.equals(that.date)) return false;
-        return userId.equals(that.userId);
+        if (!userId.equals(that.userId)) return false;
+        return spotId.equals(that.spotId);
+
     }
 
     @Override
@@ -71,6 +87,7 @@ public class Commentaire implements Serializable {
         result = 31 * result + commentaire.hashCode();
         result = 31 * result + date.hashCode();
         result = 31 * result + userId.hashCode();
+        result = 31 * result + spotId.hashCode();
         return result;
     }
 }

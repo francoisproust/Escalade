@@ -21,10 +21,12 @@ public class Longueur implements Serializable {
     private Integer spits;
 
     @JoinColumn(name = "indice",referencedColumnName = "indice")
+    @ManyToOne
     private Cotation indice;
+
+    @Column(name = "voie_id",nullable = false)
     @JoinColumn(name = "voie_id",referencedColumnName = "voie_id")
     private Voie voieId;
-
 
     public Integer getLongueurId() {
         return longueurId;
@@ -96,6 +98,7 @@ public class Longueur implements Serializable {
         if (!spits.equals(longueur1.spits)) return false;
         if (!indice.equals(longueur1.indice)) return false;
         return voieId.equals(longueur1.voieId);
+
     }
 
     @Override

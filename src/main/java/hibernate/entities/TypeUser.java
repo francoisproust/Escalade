@@ -4,8 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-
-
 @Entity
 @Table(name="type_user")
 public class TypeUser implements Serializable {
@@ -35,6 +33,14 @@ public class TypeUser implements Serializable {
         this.typeUser = typeUser;
     }
 
+    public Collection<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,12 +49,15 @@ public class TypeUser implements Serializable {
         TypeUser typeUser1 = (TypeUser) o;
 
         if (!typeId.equals(typeUser1.typeId)) return false;
+        if (!utilisateurs.equals(typeUser1.utilisateurs)) return false;
         return typeUser.equals(typeUser1.typeUser);
+
     }
 
     @Override
     public int hashCode() {
         int result = typeId.hashCode();
+        result = 31 * result + utilisateurs.hashCode();
         result = 31 * result + typeUser.hashCode();
         return result;
     }

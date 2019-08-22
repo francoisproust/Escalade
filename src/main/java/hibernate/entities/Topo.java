@@ -4,13 +4,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
-
 @Entity
 @Table(name="topo")
 public class Topo implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name="topo_id")
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Composition",
+            joinColumns = { @JoinColumn(name = "topo_id") },
+            inverseJoinColumns = { @JoinColumn(name = "spot_id") }
+    )
     private Integer topoId;
     @Column (name = "nom",nullable = false,length = 50)
     private String nom;
@@ -21,9 +25,9 @@ public class Topo implements Serializable {
     @Column (name="disponibilite",nullable = false)
     private Boolean disponibilite;
     @Column(name = "user_id",nullable = false)
-    private Integer userId;
-    @Column(name = "spot_id",nullable = false)
-    private Integer spotId;
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    @ManyToOne
+    private Utilisateur userId;
 
     public Integer getTopoId() {
         return topoId;
@@ -65,20 +69,12 @@ public class Topo implements Serializable {
         this.disponibilite = disponibilite;
     }
 
-    public Integer getUserId() {
+    public Utilisateur getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Utilisateur userId) {
         this.userId = userId;
-    }
-
-    public Integer getSpotId() {
-        return spotId;
-    }
-
-    public void setSpotId(Integer spotId) {
-        this.spotId = spotId;
     }
 
     @Override
@@ -93,8 +89,8 @@ public class Topo implements Serializable {
         if (!isbn.equals(topo.isbn)) return false;
         if (!parution.equals(topo.parution)) return false;
         if (!disponibilite.equals(topo.disponibilite)) return false;
-        if (!userId.equals(topo.userId)) return false;
-        return spotId.equals(topo.spotId);
+        return userId.equals(topo.userId);
+
     }
 
     @Override
@@ -105,7 +101,6 @@ public class Topo implements Serializable {
         result = 31 * result + parution.hashCode();
         result = 31 * result + disponibilite.hashCode();
         result = 31 * result + userId.hashCode();
-        result = 31 * result + spotId.hashCode();
         return result;
     }
 }

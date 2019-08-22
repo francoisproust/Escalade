@@ -8,7 +8,14 @@ import java.util.Collection;
 @Table(name="spot")
 public class Spot implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
+
     @Column(name="spot_id", nullable = false)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Composition",
+            joinColumns = { @JoinColumn(name = "spot_id") },
+            inverseJoinColumns = { @JoinColumn(name = "topo_id") }
+    )
     private Integer spotId;
     @Column(name="nom",nullable = false,length = 50)
     private String nom;
@@ -18,14 +25,13 @@ public class Spot implements Serializable {
     private String descriptif;
     @Column(name="flag_asso", nullable = false)
     private Boolean flagAsso;
-    @Column(name="com_id",nullable = false)
-    private Integer comId;
 
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;
 
-
+    @OneToMany(mappedBy = "commentaire")
+    private Collection<Commentaire> commentaires;
     @OneToMany(mappedBy = "secteur")
     private Collection<Secteur> secteurs;
 
@@ -69,20 +75,28 @@ public class Spot implements Serializable {
         this.flagAsso = flagAsso;
     }
 
-    public Integer getComId() {
-        return comId;
-    }
-
-    public void setComId(Integer comId) {
-        this.comId = comId;
-    }
-
     public Utilisateur getUserId() {
         return userId;
     }
 
     public void setUserId(Utilisateur userId) {
         this.userId = userId;
+    }
+
+    public Collection<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(Collection<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    public Collection<Secteur> getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs(Collection<Secteur> secteurs) {
+        this.secteurs = secteurs;
     }
 
     @Override
@@ -97,8 +111,10 @@ public class Spot implements Serializable {
         if (!localisation.equals(spot.localisation)) return false;
         if (!descriptif.equals(spot.descriptif)) return false;
         if (!flagAsso.equals(spot.flagAsso)) return false;
-        if (!comId.equals(spot.comId)) return false;
-        return userId.equals(spot.userId);
+        if (!userId.equals(spot.userId)) return false;
+        if (!commentaires.equals(spot.commentaires)) return false;
+        return secteurs.equals(spot.secteurs);
+
     }
 
     @Override
@@ -108,8 +124,9 @@ public class Spot implements Serializable {
         result = 31 * result + localisation.hashCode();
         result = 31 * result + descriptif.hashCode();
         result = 31 * result + flagAsso.hashCode();
-        result = 31 * result + comId.hashCode();
         result = 31 * result + userId.hashCode();
+        result = 31 * result + commentaires.hashCode();
+        result = 31 * result + secteurs.hashCode();
         return result;
     }
 }

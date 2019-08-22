@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-
 @Entity
 @Table(name="utilisateur")
 public class Utilisateur implements Serializable {
@@ -16,6 +15,8 @@ public class Utilisateur implements Serializable {
     private Collection<Commentaire> commentaires;
     @OneToMany(mappedBy = "spots")
     private Collection<Spot> spots;
+    @OneToMany(mappedBy = "topo")
+    private Collection<Topo> topos;
 
     @Column (name = "utilisateur",nullable = false,length = 16)
     private String utilisateur;
@@ -93,6 +94,22 @@ public class Utilisateur implements Serializable {
 
     public void setCommentaires(Collection<Commentaire> commentaires) {
         this.commentaires = commentaires;
+    }
+
+    public Collection<Spot> getSpots() {
+        return spots;
+    }
+
+    public void setSpots(Collection<Spot> spots) {
+        this.spots = spots;
+    }
+
+    public Collection<Topo> getTopos() {
+        return topos;
+    }
+
+    public void setTopos(Collection<Topo> topos) {
+        this.topos = topos;
     }
 
     @Override

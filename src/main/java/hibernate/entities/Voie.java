@@ -21,6 +21,7 @@ public class Voie implements Serializable {
     @Column (name = "nb_relai",nullable = false)
     private Integer nbRelai;
 
+    @Column(name = "secteur_id",nullable = false)
     @JoinColumn(name = "secteur_id",referencedColumnName = "secteur_id")
     private Secteur secteurId;
 
@@ -75,6 +76,14 @@ public class Voie implements Serializable {
         this.secteurId = secteurId;
     }
 
+    public Collection<Longueur> getLongueurs() {
+        return longueurs;
+    }
+
+    public void setLongueurs(Collection<Longueur> longueurs) {
+        this.longueurs = longueurs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,7 +96,9 @@ public class Voie implements Serializable {
         if (!designation.equals(voie.designation)) return false;
         if (!relai.equals(voie.relai)) return false;
         if (!nbRelai.equals(voie.nbRelai)) return false;
-        return secteurId.equals(voie.secteurId);
+        if (!secteurId.equals(voie.secteurId)) return false;
+        return longueurs.equals(voie.longueurs);
+
     }
 
     @Override
@@ -98,6 +109,7 @@ public class Voie implements Serializable {
         result = 31 * result + relai.hashCode();
         result = 31 * result + nbRelai.hashCode();
         result = 31 * result + secteurId.hashCode();
+        result = 31 * result + longueurs.hashCode();
         return result;
     }
 }
