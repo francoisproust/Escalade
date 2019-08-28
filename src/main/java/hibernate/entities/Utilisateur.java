@@ -10,15 +10,6 @@ public class Utilisateur implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name = "user_id",nullable = false)
     private Integer userId;
-
-    @OneToMany(mappedBy = "Commentaire")
-    private Collection<Commentaire> commentaires;
-    @OneToMany(mappedBy = "spots")
-    private Collection<Spot> spots;
-
-    @OneToMany(mappedBy = "topo")
-    private Collection<Topo> topos;
-
     @Column (name = "utilisateur",nullable = false,length = 16)
     private String utilisateur;
     @Column (name = "nom",nullable = false,length = 32)
@@ -32,6 +23,12 @@ public class Utilisateur implements Serializable {
     @JoinColumn(name = "type_id",referencedColumnName = "type_id")
     @ManyToOne
     private TypeUser typeUser;
+    @OneToMany(mappedBy = "Commentaire")
+    private Collection<Commentaire> commentaires;
+    @OneToMany(mappedBy = "spots")
+    private Collection<Spot> spots;
+    @OneToMany(mappedBy = "topo")
+    private Collection<Topo> topos;
 
     public Integer getUserId() {
         return userId;

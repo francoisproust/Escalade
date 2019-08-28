@@ -11,12 +11,21 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">francois</property>
-
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
         <property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
-
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
+        <mapping package="hibernate.entities"/>
+        <mapping class="hibernate.entities.Commentaire" />
+        <mapping class="hibernate.entities.Composition" />
+        <mapping class="hibernate.entities.Cotation" />
+        <mapping class="hibernate.entities.Longueur" />
+        <mapping class="hibernate.entities.Secteur" />
+        <mapping class="hibernate.entities.Spot" />
+        <mapping class="hibernate.entities.Topo" />
+        <mapping class="hibernate.entities.TypeUser"/>
+        <mapping class="hibernate.entities.Utilisateur" />
+        <mapping class="hibernate.entities.Voie" />
     </session-factory>
 </hibernate-configuration>

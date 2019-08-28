@@ -21,6 +21,7 @@ public class Spot implements Serializable {
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;
+
     @OneToMany(mappedBy = "commentaire")
     private Collection<Commentaire> commentaires;
     @OneToMany(mappedBy = "secteur")
