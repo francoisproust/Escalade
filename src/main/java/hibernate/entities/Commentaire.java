@@ -15,12 +15,12 @@ public class Commentaire implements Serializable {
     @Column (name = "date",nullable = false)
     private Date date;
 
-    @Column (name = "user_id",nullable = false)
+    //@Column (name = "user_id",nullable = false)
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
     private Utilisateur userId;
 
-    @Column(name="spot_id",nullable = false)
+  //  @Column(name="spot_id",nullable = false)
     @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
     @ManyToOne
     private Spot spotId;

@@ -16,7 +16,7 @@ public class Secteur implements Serializable {
     @Column (name = "designation",nullable = false,length = 255)
     private String designation;
 
-    @Column(name = "spot_id",nullable = false)
+    //@Column(name = "spot_id",nullable = false)
     @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
     @ManyToOne
     private Spot spotId;

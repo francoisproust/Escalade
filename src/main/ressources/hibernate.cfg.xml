@@ -18,7 +18,6 @@
 
         <mapping package="hibernate.entities"/>
         <mapping class="hibernate.entities.Commentaire" />
-        <mapping class="hibernate.entities.Composition" />
         <mapping class="hibernate.entities.Cotation" />
         <mapping class="hibernate.entities.Longueur" />
         <mapping class="hibernate.entities.Secteur" />
