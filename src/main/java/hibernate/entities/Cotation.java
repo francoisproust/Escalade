@@ -10,11 +10,12 @@ public class Cotation implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name = "indice",nullable = false,length = 2)
     private String indice;
-    @Column (name = "commentaire",nullable = false,length = 50)
-    private String commentaire;
 
     @OneToMany(mappedBy = "cotation")
     private Collection<Longueur> longueurs;
+
+    @Column (name = "commentaire",nullable = false,length = 50)
+    private String commentaire;
 
     public String getIndice() {
         return indice;

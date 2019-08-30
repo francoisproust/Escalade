@@ -9,6 +9,7 @@ import java.util.Date;
 @Table(name="topo")
 public class Topo implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
+    private Integer topoId;
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "composition",
@@ -16,7 +17,6 @@ public class Topo implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "spot_id") }
     )
     private Collection<Spot> spots;
-    private Integer topoId;
     @Column (name = "nom",nullable = false,length = 50)
     private String nom;
     @Column(name = "isbn",nullable = false,length = 13)
