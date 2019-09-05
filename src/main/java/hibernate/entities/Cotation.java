@@ -8,10 +8,13 @@ import java.util.Collection;
 @Table(name = "cotation")
 public class Cotation implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
+    @Column(name="cotation_id",nullable = false)
+    private Integer cotationId;
+
     @Column (name = "indice",nullable = false,length = 2)
     private String indice;
 
-    @OneToMany(mappedBy = "cotation")
+    @OneToMany(mappedBy = "cotationId")
     private Collection<Longueur> longueurs;
 
     @Column (name = "commentaire",nullable = false,length = 50)
@@ -41,6 +44,14 @@ public class Cotation implements Serializable {
         this.longueurs = longueurs;
     }
 
+    public Integer getCotationId() {
+        return cotationId;
+    }
+
+    public void setCotationId(Integer cotationId) {
+        this.cotationId = cotationId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,17 +59,18 @@ public class Cotation implements Serializable {
 
         Cotation cotation = (Cotation) o;
 
+        if (!cotationId.equals(cotation.cotationId)) return false;
         if (!indice.equals(cotation.indice)) return false;
-        if (!commentaire.equals(cotation.commentaire)) return false;
-        return longueurs.equals(cotation.longueurs);
-
+        if (!longueurs.equals(cotation.longueurs)) return false;
+        return commentaire.equals(cotation.commentaire);
     }
 
     @Override
     public int hashCode() {
-        int result = indice.hashCode();
-        result = 31 * result + commentaire.hashCode();
+        int result = cotationId.hashCode();
+        result = 31 * result + indice.hashCode();
         result = 31 * result + longueurs.hashCode();
+        result = 31 * result + commentaire.hashCode();
         return result;
     }
 }

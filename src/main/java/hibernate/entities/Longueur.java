@@ -20,9 +20,9 @@ public class Longueur implements Serializable {
     @Column (name = "spits",nullable = false)
     private Integer spits;
 
-    @JoinColumn(name = "indice",referencedColumnName = "indice")
+    @JoinColumn(name = "cotation_id",referencedColumnName = "cotation_id")
     @ManyToOne
-    private Cotation indice;
+    private Cotation cotationId;
 
     @Column(name = "voie_id",nullable = false)
     @JoinColumn(name = "voie_id",referencedColumnName = "voie_id")
@@ -68,12 +68,12 @@ public class Longueur implements Serializable {
         this.spits = spits;
     }
 
-    public Cotation getIndice() {
-        return indice;
+    public Cotation getCotationId() {
+        return cotationId;
     }
 
-    public void setIndice(Cotation indice) {
-        this.indice = indice;
+    public void setCotationId(Cotation cotationId) {
+        this.cotationId = cotationId;
     }
 
     public Voie getVoieId() {
@@ -96,9 +96,8 @@ public class Longueur implements Serializable {
         if (!designation.equals(longueur1.designation)) return false;
         if (!longueur.equals(longueur1.longueur)) return false;
         if (!spits.equals(longueur1.spits)) return false;
-        if (!indice.equals(longueur1.indice)) return false;
+        if (!cotationId.equals(longueur1.cotationId)) return false;
         return voieId.equals(longueur1.voieId);
-
     }
 
     @Override
@@ -108,7 +107,7 @@ public class Longueur implements Serializable {
         result = 31 * result + designation.hashCode();
         result = 31 * result + longueur.hashCode();
         result = 31 * result + spits.hashCode();
-        result = 31 * result + indice.hashCode();
+        result = 31 * result + cotationId.hashCode();
         result = 31 * result + voieId.hashCode();
         return result;
     }

@@ -21,8 +21,9 @@ public class Voie implements Serializable {
     @Column (name = "nb_relai",nullable = false)
     private Integer nbRelai;
 
-    @Column(name = "secteur_id",nullable = false)
+    //@Column(name = "secteur_id",nullable = false)
     @JoinColumn(name = "secteur_id",referencedColumnName = "secteur_id")
+    @ManyToOne
     private Secteur secteurId;
 
     @OneToMany(mappedBy = "longueur")
