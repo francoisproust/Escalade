@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="commentaire")
+@Table(name="commentaire", schema = "escalade.public")
 public class Commentaire implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column(name ="com_id",nullable = false)

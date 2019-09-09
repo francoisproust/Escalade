@@ -6,15 +6,15 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name="topo")
+@Table(name="topo", schema = "escalade.public")
 public class Topo implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     private Integer topoId;
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "composition",
-            joinColumns = { @JoinColumn(name = "topo_id") },
-            inverseJoinColumns = { @JoinColumn(name = "spot_id") }
+            joinColumns = { @JoinColumn(name = "topoId") },
+            inverseJoinColumns = { @JoinColumn(name = "spotId") }
     )
     private Collection<Spot> spots;
     @Column (name = "nom",nullable = false,length = 50)
