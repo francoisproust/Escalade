@@ -25,7 +25,7 @@ public class Spot implements Serializable {
 
     @OneToMany(mappedBy = "commentaire")
     private Collection<Commentaire> commentaires;
-    @OneToMany(mappedBy = "secteur")
+    @OneToMany(mappedBy = "spotId")
     private Collection<Secteur> secteurs;
     @ManyToMany(mappedBy = "spots")
     private Collection<Topo> topos;

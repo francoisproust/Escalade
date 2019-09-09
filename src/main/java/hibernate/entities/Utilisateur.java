@@ -23,11 +23,11 @@ public class Utilisateur implements Serializable {
     @JoinColumn(name = "type_id",referencedColumnName = "type_id")
     @ManyToOne
     private TypeUser typeUser;
-    @OneToMany(mappedBy = "Commentaire")
+    @OneToMany(mappedBy = "comId")
     private Collection<Commentaire> commentaires;
-    @OneToMany(mappedBy = "spots")
+    @OneToMany(mappedBy = "spotId")
     private Collection<Spot> spots;
-    @OneToMany(mappedBy = "topo")
+    @OneToMany(mappedBy = "topoId")
     private Collection<Topo> topos;
 
     public Integer getUserId() {

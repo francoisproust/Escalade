@@ -20,7 +20,7 @@ public class Secteur implements Serializable {
     @ManyToOne
     private Spot spotId;
 
-    @OneToMany(mappedBy = "voie")
+    @OneToMany(mappedBy = "secteurId")
     private Collection<Voie> voies;
 
     public Integer getSecteurId() {
