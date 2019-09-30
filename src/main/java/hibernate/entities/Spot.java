@@ -3,6 +3,8 @@ package hibernate.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="spot", schema = "escalade.public")
@@ -28,7 +30,7 @@ public class Spot implements Serializable {
     @OneToMany(mappedBy = "spotId")
     private Collection<Secteur> secteurs;
     @ManyToMany(mappedBy = "spots")
-    private Collection<Topo> topos;
+    private Set<Topo> topos;
 
     public Integer getSpotId() {
         return spotId;
@@ -98,7 +100,7 @@ public class Spot implements Serializable {
         return topos;
     }
 
-    public void setTopos(Collection<Topo> topos) {
+    public void setTopos(Set<Topo> topos) {
         this.topos = topos;
     }
 

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="topo", schema = "escalade.public")
@@ -13,10 +14,10 @@ public class Topo implements Serializable {
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "composition",
-            joinColumns = { @JoinColumn(name = "topoId") },
-            inverseJoinColumns = { @JoinColumn(name = "spotId") }
+            joinColumns = { @JoinColumn(name = "topo_id") },
+            inverseJoinColumns = { @JoinColumn(name = "spot_id") }
     )
-    private Collection<Spot> spots;
+    private Set<Spot> spots;
     @Column (name = "nom",nullable = false,length = 50)
     private String nom;
     @Column(name = "isbn",nullable = false,length = 13)
@@ -82,7 +83,7 @@ public class Topo implements Serializable {
         return spots;
     }
 
-    public void setSpots(Collection<Spot> spots) {
+    public void setSpots(Set<Spot> spots) {
         this.spots = spots;
     }
 
