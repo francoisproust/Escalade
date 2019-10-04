@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="spot", schema = "escalade.public")
+@Table(name="spot", schema = "public")
 public class Spot implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column(name = "spot_id",nullable = false)
@@ -25,8 +25,8 @@ public class Spot implements Serializable {
     @ManyToOne
     private Utilisateur userId;
 
-    @OneToMany(mappedBy = "commentaire")
-    private Collection<Commentaire> commentaires;
+    @OneToMany(mappedBy = "description")
+    private Collection<Commentaire> descriptions;
     @OneToMany(mappedBy = "spotId")
     private Collection<Secteur> secteurs;
     @ManyToMany(mappedBy = "spots")
@@ -80,12 +80,12 @@ public class Spot implements Serializable {
         this.userId = userId;
     }
 
-    public Collection<Commentaire> getCommentaires() {
-        return commentaires;
+    public Collection<Commentaire> getDescriptions() {
+        return descriptions;
     }
 
-    public void setCommentaires(Collection<Commentaire> commentaires) {
-        this.commentaires = commentaires;
+    public void setCommentaires(Collection<Commentaire> descriptions) {
+        this.descriptions = descriptions;
     }
 
     public Collection<Secteur> getSecteurs() {
@@ -104,36 +104,6 @@ public class Spot implements Serializable {
         this.topos = topos;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Spot spot = (Spot) o;
 
-        if (!topos.equals(spot.topos)) return false;
-        if (!spotId.equals(spot.spotId)) return false;
-        if (!nom.equals(spot.nom)) return false;
-        if (!localisation.equals(spot.localisation)) return false;
-        if (!descriptif.equals(spot.descriptif)) return false;
-        if (!flagAsso.equals(spot.flagAsso)) return false;
-        if (!userId.equals(spot.userId)) return false;
-        if (!commentaires.equals(spot.commentaires)) return false;
-        return secteurs.equals(spot.secteurs);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = topos.hashCode();
-        result = 31 * result + spotId.hashCode();
-        result = 31 * result + nom.hashCode();
-        result = 31 * result + localisation.hashCode();
-        result = 31 * result + descriptif.hashCode();
-        result = 31 * result + flagAsso.hashCode();
-        result = 31 * result + userId.hashCode();
-        result = 31 * result + commentaires.hashCode();
-        result = 31 * result + secteurs.hashCode();
-        return result;
-    }
 }

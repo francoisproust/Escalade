@@ -7,7 +7,7 @@ import java.util.Collection;
 
 
 @Entity
-@Table(name = "voie", schema = "escalade.public")
+@Table(name = "voie", schema = "public")
 public class Voie implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name = "voie_id",nullable = false)

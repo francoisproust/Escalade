@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Table(name = "cotation", schema = "escalade.public")
+@Table(name = "cotation", schema = "public" )
 public class Cotation implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column(name="cotation_id",nullable = false)
@@ -17,7 +17,7 @@ public class Cotation implements Serializable {
     @OneToMany(mappedBy = "cotationId")
     private Collection<Longueur> longueurs;
 
-    @Column (name = "commentaire",nullable = false,length = 50)
+    //@Column (name = "commentaire",nullable = false,length = 50)
     private String commentaire;
 
     public String getIndice() {

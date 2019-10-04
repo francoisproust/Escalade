@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name="topo", schema = "escalade.public")
+@Table(name="topo", schema = "public")
 public class Topo implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     private Integer topoId;
