@@ -2,7 +2,7 @@ package hibernate.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="utilisateur", schema = "public")
@@ -10,8 +10,8 @@ public class Utilisateur implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name = "user_id",nullable = false)
     private Integer userId;
-    @Column (name = "utilisateur",nullable = false,length = 16)
-    private String utilisateur;
+    @Column (name = "pseudo",nullable = false,length = 16)
+    private String pseudo;
     @Column (name = "nom",nullable = false,length = 32)
     private String nom;
     @Column (name = "prenom",nullable = false,length = 32)
@@ -20,16 +20,15 @@ public class Utilisateur implements Serializable {
     private String email;
     @Column (name = "password",nullable = false,length = 32)
     private String password;
-    @JoinColumn(name = "type_id",referencedColumnName = "type_id")
     @ManyToOne
+    @JoinColumn(name = "type_id")
     private TypeUser typeUser;
-    @OneToMany(mappedBy = "comId")
-    private Collection<Commentaire> commentaires;
-    @OneToMany(mappedBy = "spotId")
-    private Collection<Spot> spots;
-    @OneToMany(mappedBy = "topoId")
-    private Collection<Topo> topos;
-
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private Set<Commentaire> commentaires;
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private Set<Spot> spots;
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private Set<Topo> topos;
     public Integer getUserId() {
         return userId;
     }
@@ -38,12 +37,12 @@ public class Utilisateur implements Serializable {
         this.userId = userId;
     }
 
-    public String getUtilisateur() {
-        return utilisateur;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setUtilisateur(String utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getNom() {
@@ -86,55 +85,27 @@ public class Utilisateur implements Serializable {
         this.typeUser = typeUser;
     }
 
-    public Collection<Commentaire> getCommentaires() {
+    public Set<Commentaire> getCommentaires() {
         return commentaires;
     }
 
-    public void setCommentaires(Collection<Commentaire> commentaires) {
+    public void setCommentaires(Set<Commentaire> commentaires) {
         this.commentaires = commentaires;
     }
 
-    public Collection<Spot> getSpots() {
+    public Set<Spot> getSpots() {
         return spots;
     }
 
-    public void setSpots(Collection<Spot> spots) {
+    public void setSpots(Set<Spot> spots) {
         this.spots = spots;
     }
 
-    public Collection<Topo> getTopos() {
+    public Set<Topo> getTopos() {
         return topos;
     }
 
-    public void setTopos(Collection<Topo> topos) {
+    public void setTopos(Set<Topo> topos) {
         this.topos = topos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Utilisateur that = (Utilisateur) o;
-
-        if (!userId.equals(that.userId)) return false;
-        if (!utilisateur.equals(that.utilisateur)) return false;
-        if (!nom.equals(that.nom)) return false;
-        if (!prenom.equals(that.prenom)) return false;
-        if (!email.equals(that.email)) return false;
-        if (!password.equals(that.password)) return false;
-        return typeUser.equals(that.typeUser);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userId.hashCode();
-        result = 31 * result + utilisateur.hashCode();
-        result = 31 * result + nom.hashCode();
-        result = 31 * result + prenom.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + typeUser.hashCode();
-        return result;
     }
 }

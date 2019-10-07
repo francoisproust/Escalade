@@ -2,8 +2,7 @@ package hibernate.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-
+import java.util.Set;
 
 
 @Entity
@@ -20,14 +19,11 @@ public class Voie implements Serializable {
     private Boolean relai;
     @Column (name = "nb_relai",nullable = false)
     private Integer nbRelai;
-
-    //@Column(name = "secteur_id",nullable = false)
-    @JoinColumn(name = "secteur_id",referencedColumnName = "secteur_id")
     @ManyToOne
-    private Secteur secteurId;
-
-    @OneToMany(mappedBy = "longueur")
-    private Collection<Longueur> longueurs;
+    @JoinColumn(name = "secteur_id")
+    private Secteur secteur;
+    @OneToMany(mappedBy = "voie", cascade = CascadeType.ALL)
+    private Set<Longueur> longueurs;
 
     public Integer getVoieId() {
         return voieId;
@@ -69,48 +65,19 @@ public class Voie implements Serializable {
         this.nbRelai = nbRelai;
     }
 
-    public Secteur getSecteurId() {
-        return secteurId;
+    public Secteur getSecteur() {
+        return secteur;
     }
 
-    public void setSecteurId(Secteur secteurId) {
-        this.secteurId = secteurId;
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
     }
 
-    public Collection<Longueur> getLongueurs() {
+    public Set<Longueur> getLongueurs() {
         return longueurs;
     }
 
-    public void setLongueurs(Collection<Longueur> longueurs) {
+    public void setLongueurs(Set<Longueur> longueurs) {
         this.longueurs = longueurs;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Voie voie = (Voie) o;
-
-        if (!voieId.equals(voie.voieId)) return false;
-        if (!nom.equals(voie.nom)) return false;
-        if (!designation.equals(voie.designation)) return false;
-        if (!relai.equals(voie.relai)) return false;
-        if (!nbRelai.equals(voie.nbRelai)) return false;
-        if (!secteurId.equals(voie.secteurId)) return false;
-        return longueurs.equals(voie.longueurs);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = voieId.hashCode();
-        result = 31 * result + nom.hashCode();
-        result = 31 * result + designation.hashCode();
-        result = 31 * result + relai.hashCode();
-        result = 31 * result + nbRelai.hashCode();
-        result = 31 * result + secteurId.hashCode();
-        result = 31 * result + longueurs.hashCode();
-        return result;
     }
 }

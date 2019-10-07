@@ -2,7 +2,7 @@ package hibernate.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 
 
 @Entity
@@ -15,14 +15,11 @@ public class Secteur implements Serializable {
     private String nom;
     @Column (name = "designation",nullable = false,length = 255)
     private String designation;
-    //@Column(name = "spot_id",nullable = false)
-    @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
     @ManyToOne
-    private Spot spotId;
-
-    @OneToMany(mappedBy = "secteurId")
-    private Collection<Voie> voies;
-
+    @JoinColumn(name = "spot_id")
+    private Spot spot;
+    @OneToMany(mappedBy = "secteur",cascade = CascadeType.ALL)
+    private Set<Voie> voie;
     public Integer getSecteurId() {
         return secteurId;
     }
@@ -47,44 +44,19 @@ public class Secteur implements Serializable {
         this.designation = designation;
     }
 
-    public Spot getSpotId() {
-        return spotId;
+    public Spot getSpot() {
+        return spot;
     }
 
-    public void setSpotId(Spot spotId) {
-        this.spotId = spotId;
+    public void setSpot(Spot spot) {
+        this.spot = spot;
     }
 
-    public Collection<Voie> getVoies() {
-        return voies;
+    public Set<Voie> getVoie() {
+        return voie;
     }
 
-    public void setVoies(Collection<Voie> voies) {
-        this.voies = voies;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Secteur secteur = (Secteur) o;
-
-        if (!secteurId.equals(secteur.secteurId)) return false;
-        if (!nom.equals(secteur.nom)) return false;
-        if (!designation.equals(secteur.designation)) return false;
-        if (!spotId.equals(secteur.spotId)) return false;
-        return voies.equals(secteur.voies);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = secteurId.hashCode();
-        result = 31 * result + nom.hashCode();
-        result = 31 * result + designation.hashCode();
-        result = 31 * result + spotId.hashCode();
-        result = 31 * result + voies.hashCode();
-        return result;
+    public void setVoie(Set<Voie> voie) {
+        this.voie = voie;
     }
 }

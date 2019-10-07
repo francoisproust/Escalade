@@ -14,18 +14,11 @@ public class Commentaire implements Serializable {
     private String description;
     @Column (name = "date",nullable = false)
     private Date date;
-
-    //@Column (name = "user_id",nullable = false)
-    /*@JoinColumn(name = "user_id",referencedColumnName = "user_id")
     @ManyToOne
-    private Utilisateur userId;
-
-  //  @Column(name="spot_id",nullable = false)
-    @JoinColumn(name = "spot_id",referencedColumnName = "spot_id")
-    @ManyToOne
-    private Spot spotId;*/
-
-
+    @JoinColumn(name = "user_id")
+    private Utilisateur utilisateur;
+    @Column(name = "spot_id")
+    private Integer spotId;
 
     public Integer getComId() {
         return comId;
@@ -51,10 +44,12 @@ public class Commentaire implements Serializable {
         this.date = date;
     }
 
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
 
-
-
-
-
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }
 

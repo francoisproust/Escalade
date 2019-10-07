@@ -1,8 +1,9 @@
 package hibernate.entities;
 
 import javax.persistence.*;
+import javax.rmi.CORBA.Util;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="type_user", schema = "public")
@@ -10,12 +11,11 @@ public class TypeUser implements Serializable {
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
     @Column (name = "type_id",nullable = false)
     private Integer typeId;
+    @Column(name="libelle_user",nullable = false,length = 32)
+    private String libelleUser;
 
-    @OneToMany(mappedBy="typeUser")
-    private Collection<Utilisateur> utilisateurs ;
-
-    @Column(name="type_user",nullable = false,length = 32)
-    private String typeUser;
+    @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
+    private Set<Utilisateur> utilisateurs;
 
     public Integer getTypeId() {
         return typeId;
@@ -25,41 +25,21 @@ public class TypeUser implements Serializable {
         this.typeId = typeId;
     }
 
-    public String getTypeUser() {
-        return typeUser;
+    public String getLibelleUser() {
+        return libelleUser;
     }
 
-    public void setTypeUser(String typeUser) {
-        this.typeUser = typeUser;
+    public void setLibelleUser(String libelleUser) {
+        this.libelleUser = libelleUser;
     }
 
-    public Collection<Utilisateur> getUtilisateurs() {
+    public Set<Utilisateur> getUtilisateurs() {
         return utilisateurs;
     }
 
-    public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TypeUser typeUser1 = (TypeUser) o;
-
-        if (!typeId.equals(typeUser1.typeId)) return false;
-        if (!utilisateurs.equals(typeUser1.utilisateurs)) return false;
-        return typeUser.equals(typeUser1.typeUser);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = typeId.hashCode();
-        result = 31 * result + utilisateurs.hashCode();
-        result = 31 * result + typeUser.hashCode();
-        return result;
-    }
 }
 
