@@ -1,4 +1,7 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,8 +20,10 @@ public class Secteur implements Serializable {
     private String designation;
     @ManyToOne
     @JoinColumn(name = "spot_id")
+    @JsonBackReference
     private Spot spot;
     @OneToMany(mappedBy = "secteur",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Voie> voie;
     public Integer getSecteurId() {
         return secteurId;

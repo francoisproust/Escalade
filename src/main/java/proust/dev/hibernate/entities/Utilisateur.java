@@ -1,4 +1,7 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,13 +25,18 @@ public class Utilisateur implements Serializable {
     private String password;
     @ManyToOne
     @JoinColumn(name = "type_id")
+    @JsonBackReference
     private TypeUser typeUser;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Commentaire> commentaires;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Spot> spots;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Topo> topos;
+
     public Integer getUserId() {
         return userId;
     }
@@ -107,5 +115,21 @@ public class Utilisateur implements Serializable {
 
     public void setTopos(Set<Topo> topos) {
         this.topos = topos;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "userId=" + userId +
+                ", pseudo='" + pseudo + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", typeUser=" + typeUser +
+                ", commentaires=" + commentaires +
+                ", spots=" + spots +
+                ", topos=" + topos +
+                '}';
     }
 }

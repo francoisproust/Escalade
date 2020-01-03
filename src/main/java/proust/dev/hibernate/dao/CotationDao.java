@@ -1,6 +1,6 @@
-package hibernate.dao;
+package proust.dev.hibernate.dao;
 
-import hibernate.entities.Cotation;
+import proust.dev.hibernate.entities.Cotation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

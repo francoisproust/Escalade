@@ -14,15 +14,15 @@
 
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
-        <mapping package="hibernate.entities"/>
-        <mapping class="hibernate.entities.Commentaire" />
-        <mapping class="hibernate.entities.Cotation" />
-        <mapping class="hibernate.entities.Longueur" />
-        <mapping class="hibernate.entities.Secteur" />
-        <mapping class="hibernate.entities.Spot" />
-        <mapping class="hibernate.entities.Topo" />
-        <mapping class="hibernate.entities.TypeUser"/>
-        <mapping class="hibernate.entities.Utilisateur" />
-        <mapping class="hibernate.entities.Voie" />
+        <mapping package="proust.dev.hibernate.entities"/>
+        <mapping class="proust.dev.hibernate.entities.Commentaire" />
+        <mapping class="proust.dev.hibernate.entities.Cotation" />
+        <mapping class="proust.dev.hibernate.entities.Longueur" />
+        <mapping class="proust.dev.hibernate.entities.Secteur" />
+        <mapping class="proust.dev.hibernate.entities.Spot" />
+        <mapping class="proust.dev.hibernate.entities.Topo" />
+        <mapping class="proust.dev.hibernate.entities.TypeUser"/>
+        <mapping class="proust.dev.hibernate.entities.Utilisateur" />
+        <mapping class="proust.dev.hibernate.entities.Voie" />
     </session-factory>
 </hibernate-configuration>

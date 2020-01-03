@@ -1,4 +1,7 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,10 +23,13 @@ public class Spot implements Serializable {
     private Boolean flagAsso;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Utilisateur utilisateur;
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Secteur> secteurs;
     @ManyToMany(mappedBy = "spots")
+    @JsonManagedReference
     private Set<Topo> topos;
     public Integer getSpotId() {
         return spotId;

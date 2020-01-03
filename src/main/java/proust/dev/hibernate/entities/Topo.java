@@ -1,4 +1,6 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,6 +22,7 @@ public class Topo implements Serializable {
     private Boolean disponibilite;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Utilisateur utilisateur;
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(

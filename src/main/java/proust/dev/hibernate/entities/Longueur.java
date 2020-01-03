@@ -1,4 +1,6 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,10 +21,12 @@ public class Longueur implements Serializable {
     private Integer spits;
     @ManyToOne
     @JoinColumn(name = "cotation_id")
+    @JsonBackReference
     private Cotation cotation;
 
     @ManyToOne
     @JoinColumn(name = "voie_id")
+    @JsonBackReference
     private Voie voie;
 
     public Integer getLongueurId() {

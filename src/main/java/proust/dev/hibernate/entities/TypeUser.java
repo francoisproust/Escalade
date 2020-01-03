@@ -1,7 +1,8 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import javax.rmi.CORBA.Util;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class TypeUser implements Serializable {
     private String libelleUser;
 
     @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Utilisateur> utilisateurs;
 
     public Integer getTypeId() {

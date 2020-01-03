@@ -1,4 +1,6 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +16,7 @@ public class Cotation implements Serializable {
     private String indice;
 
     @OneToMany(mappedBy = "cotation", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Longueur> longueurs;
 
     public String getIndice() {

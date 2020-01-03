@@ -1,4 +1,6 @@
-package hibernate.entities;
+package proust.dev.hibernate.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ public class Commentaire implements Serializable {
     private Date date;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Utilisateur utilisateur;
     @Column(name = "spot_id")
     private Integer spotId;

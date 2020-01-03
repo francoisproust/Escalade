@@ -1,11 +1,10 @@
-package util;
+package proust.dev.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtils {
     private static StandardServiceRegistry registry;
@@ -16,9 +15,9 @@ public class HibernateUtils {
         // Hibernate 5:
         private static SessionFactory buildSessionFactory() {
             try {
-                // Create the ServiceRegistry from hibernate.cfg.xml
+                // Create the ServiceRegistry from proust.dev.hibernate.cfg.xml
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()//
-                        .configure("hibernate.cfg.xml").build();
+                        .configure("proust.dev.hibernate.cfg.xml").build();
 
                 // Create a metadata sources using the specified service registry.
                 Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
