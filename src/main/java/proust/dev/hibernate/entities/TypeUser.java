@@ -15,8 +15,8 @@ public class TypeUser implements Serializable {
     @Column(name="libelle_user",nullable = false,length = 32)
     private String libelleUser;
 
-    @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
     private Set<Utilisateur> utilisateurs;
 
     public Integer getTypeId() {

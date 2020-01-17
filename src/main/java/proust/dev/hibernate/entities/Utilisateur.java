@@ -1,7 +1,6 @@
 package proust.dev.hibernate.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +24,7 @@ public class Utilisateur implements Serializable {
     private String password;
     @ManyToOne
     @JoinColumn(name = "type_id")
+    //@JsonIgnore
     @JsonBackReference
     private TypeUser typeUser;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
