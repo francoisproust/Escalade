@@ -25,16 +25,12 @@ public class Utilisateur implements Serializable {
     private String password;
     @ManyToOne
     @JoinColumn(name = "type_id")
-    @JsonBackReference
     private TypeUser typeUser;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Commentaire> commentaires;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Spot> spots;
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Topo> topos;
 
     public Integer getUserId() {

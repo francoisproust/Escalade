@@ -16,7 +16,6 @@ public class TypeUser implements Serializable {
     private String libelleUser;
 
     @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Utilisateur> utilisateurs;
 
     public Integer getTypeId() {

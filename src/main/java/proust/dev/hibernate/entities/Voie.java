@@ -24,10 +24,8 @@ public class Voie implements Serializable {
     private Integer nbRelai;
     @ManyToOne
     @JoinColumn(name = "secteur_id")
-    @JsonBackReference
     private Secteur secteur;
     @OneToMany(mappedBy = "voie", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Longueur> longueurs;
 
     public Integer getVoieId() {

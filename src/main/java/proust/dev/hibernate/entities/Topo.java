@@ -22,7 +22,6 @@ public class Topo implements Serializable {
     private Boolean disponibilite;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private Utilisateur utilisateur;
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(

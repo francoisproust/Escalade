@@ -18,7 +18,6 @@ public class Commentaire implements Serializable {
     private Date date;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private Utilisateur utilisateur;
     @Column(name = "spot_id")
     private Integer spotId;

@@ -20,10 +20,8 @@ public class Secteur implements Serializable {
     private String designation;
     @ManyToOne
     @JoinColumn(name = "spot_id")
-    @JsonBackReference
     private Spot spot;
     @OneToMany(mappedBy = "secteur",cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Voie> voie;
     public Integer getSecteurId() {
         return secteurId;

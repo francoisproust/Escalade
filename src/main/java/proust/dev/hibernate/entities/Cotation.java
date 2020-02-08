@@ -16,7 +16,6 @@ public class Cotation implements Serializable {
     private String indice;
 
     @OneToMany(mappedBy = "cotation", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Longueur> longueurs;
 
     public String getIndice() {

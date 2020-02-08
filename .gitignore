@@ -9,3 +9,4 @@ target/test-classes
 .gitignore
 application.properties.good
 pom2.xml
+out/

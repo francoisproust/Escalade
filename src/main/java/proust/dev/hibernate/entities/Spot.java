@@ -23,13 +23,10 @@ public class Spot implements Serializable {
     private Boolean flagAsso;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private Utilisateur utilisateur;
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
-    @JsonManagedReference
     private Set<Secteur> secteurs;
     @ManyToMany(mappedBy = "spots")
-    @JsonManagedReference
     private Set<Topo> topos;
     public Integer getSpotId() {
         return spotId;
