@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.List;
+import java.util.Optional;
 
 
 public class Utilisateur extends HttpServlet {
@@ -18,10 +19,11 @@ public class Utilisateur extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //HibernateUtils.getSessionFactory().openSession();
-        Object monUtilisateur = utilisateurDao.findById(4);
+
+        Object monUtilisateur = utilisateurDao.findByUserId(4);
         String mavariable = "toto";
-        req.setAttribute("monUtilisateur",monUtilisateur);
+        req.setAttribute("mabase",monUtilisateur);
+        req.setAttribute("monUtilisateur",mavariable);
         this.getServletContext().getRequestDispatcher("/WEB-INF/Utilisateur.jsp").forward(req,resp);
     }
 }

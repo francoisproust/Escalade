@@ -5,7 +5,7 @@
 
 <hibernate-configuration>
     <session-factory>
-        <!-- Connection settings -->
+        <!-- Connection settings
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/escalade</property>
         <property name="hibernate.connection.username">postgres</property>
