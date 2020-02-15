@@ -1,4 +1,4 @@
-package proust.dev.util;
+package proust.dev.escalade.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

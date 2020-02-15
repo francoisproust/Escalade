@@ -1,6 +1,4 @@
-package proust.dev.hibernate.entities;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package proust.dev.escalade.hibernate.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

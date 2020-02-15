@@ -14,15 +14,15 @@
 
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
-        <mapping package="proust.dev.hibernate.entities"/>
-        <mapping class="proust.dev.hibernate.entities.Commentaire" />
-        <mapping class="proust.dev.hibernate.entities.Cotation" />
-        <mapping class="proust.dev.hibernate.entities.Longueur" />
-        <mapping class="proust.dev.hibernate.entities.Secteur" />
-        <mapping class="proust.dev.hibernate.entities.Spot" />
-        <mapping class="proust.dev.hibernate.entities.Topo" />
-        <mapping class="proust.dev.hibernate.entities.TypeUser"/>
-        <mapping class="proust.dev.hibernate.entities.Utilisateur" />
-        <mapping class="proust.dev.hibernate.entities.Voie" />
+        <mapping package="proust.dev.escalade.hibernate.entities"/>
+        <mapping class="proust.dev.escalade.hibernate.entities.Commentaire" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Cotation" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Longueur" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Secteur" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Spot" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Topo" />
+        <mapping class="proust.dev.escalade.hibernate.entities.TypeUser"/>
+        <mapping class="proust.dev.escalade.hibernate.entities.Utilisateur" />
+        <mapping class="proust.dev.escalade.hibernate.entities.Voie" />
     </session-factory>
 </hibernate-configuration>

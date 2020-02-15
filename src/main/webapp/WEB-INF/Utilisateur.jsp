@@ -15,12 +15,7 @@
         bonjour je suis une JSP
     </p>
     <p>
-        <%
-            String attribut = (String) request.getAttribute("monUtilisateur");
-            //Object attribut2 = request.getAttribute("mabase");
-            out.println(attribut);
-            //out.println(attribut2);
-        %>
+
 
     </p>
 </body>
