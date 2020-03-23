@@ -1,0 +1,25 @@
+p
+{
+    color: blue; /* Les paragraphes seront en bleu */
+}
+table {
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    border-collapse:collapse;
+    width:50%;
+    text-align:center;
+}
+td {
+    border-width:1px;
+    border-style:solid;
+    border-color:red;
+    width:50%;
+    text-align:center;
+}
+h1{
+    text-align:center;
+}
+.ajouterSpot{
+    text-align: right;
+}
