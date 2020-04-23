@@ -1,3 +1,4 @@
+
 package proust.dev.escalade.servlets;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import proust.dev.escalade.hibernate.entities.Longueur;
 import proust.dev.escalade.hibernate.entities.Spot;
 import proust.dev.escalade.services.interfaces.SpotService;
-
 import java.util.List;
 
 @Controller
@@ -19,7 +18,7 @@ public class SpotController {
     private SpotService spotService;
 
     @GetMapping("/spot")
-    public ModelAndView listerLongueur(Model model){
+    public ModelAndView listerSpot(Model model){
         List listerSpot = spotService.listerSpot();
         return new ModelAndView("spot","listerSpot",listerSpot);
     }
@@ -33,7 +32,7 @@ public class SpotController {
     @PostMapping(value = "/add-spot")
     public ModelAndView ajouterSpotPost(Model model, @ModelAttribute("spot") Spot spot) {
         spotService.ajouterSpot(spot);
-        return new ModelAndView("add-spot" );
+        return new ModelAndView("add-spot");
     }
 
 }

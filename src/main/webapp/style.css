@@ -20,6 +20,6 @@ td {
 h1{
     text-align:center;
 }
-.ajouterSpot{
+.ajouterSpot, .ajouterVoie, .ajouterLongueur, .ajouterSecteur{
     text-align: right;
 }

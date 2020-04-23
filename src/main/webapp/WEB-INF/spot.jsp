@@ -1,3 +1,5 @@
+<%@ page import="jdk.nashorn.internal.objects.AccessorPropertyDescriptor" %>
+<%@ page import="proust.dev.escalade.hibernate.entities.Spot" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -20,29 +22,28 @@
 <h1>Liste des spots enregistrés</h1>
 <table>
     <tr>
+        <td>SpotId</td>
         <td>Nom</td>
         <td>Localisation</td>
         <td>Descriptif</td>
         <td>flagAsso</td>
         <td>utilisateur</td>
-        <td>Nombre de secteurs</td>
+        <td>voir les secteurs</td>
         <td>topos</td>
     </tr>
     <c:forEach items="${listerSpot}" var="listerSpot">
         <tr>
-            <td>${listeUtilisateur.nom}</td>
-            <td>${listeUtilisateur.localisation}</td>
-            <td>${listeUtilisateur.descriptif}</td>
-            <td>${listeUtilisateur.flagAsso}</td>
-            <td>${listeUtilisateur.utilisateur}</td>
-            <td>${listeUtilisateur.secteurs}</td>
-            <td>${listeUtilisateur.topos}</td>
+            <td>${listerSpot.spotId}</td>
+            <td>${listerSpot.nom}</td>
+            <td>${listerSpot.localisation}</td>
+            <td>${listerSpot.descriptif}</td>
+            <td>${listerSpot.flagAsso}</td>
+            <td>${listerSpot.utilisateur.pseudo}</td>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>">ici</a></td>
+            <td>${listerSpot.topos}</td>
         </tr>
     </c:forEach>
 </table>
-</p>
-<p>
-
 </p>
 </body>
 </html>

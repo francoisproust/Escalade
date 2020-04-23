@@ -4,14 +4,25 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="8924ecc5-702a-452d-8e30-69d67ca85650" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/ressources/hibernate.cfg.xml" />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="spring_boot_proust.dev.escalade.Escalade" name="Escalade" removed="true">
+          <file>file://$MODULE_DIR$/src/main/java/proust/dev/escalade/Escalade.java</file>
+          <file>file://$MODULE_DIR$/src/main/ressources/application.properties</file>
+        </fileset>
+        <fileset id="spring-boot-dispatcherServletAutoConfiguration-mvc" name="Escalade MVC" removed="true">
+          <file>file://$MODULE_DIR$/src/main/java/proust/dev/escalade/Escalade.java</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/proust/dev/escalade/Escalade.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="jpa" name="JPA">
       <configuration>
