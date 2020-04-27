@@ -20,7 +20,7 @@
 <h1>Liste des Secteurs</h1>
 <table>
     <tr>
-        <td>Spot</td>
+        <td></td>
         <td>Nom</td>
         <td>Descriptif</td>
         <td>Spots</td>

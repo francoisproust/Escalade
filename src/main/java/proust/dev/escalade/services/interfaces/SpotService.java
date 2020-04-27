@@ -9,5 +9,5 @@ public interface SpotService {
  List listerSpot();
  Optional<Spot> trouverSpot (Integer spotId);
  void ajouterSpot(Spot spot);
-
+ List voirSpot(Integer spotId);
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Secteur;
 
@@ -21,9 +22,8 @@ public class SecteurController {
         List listerSecteur = secteurService.listerSecteur();
         return new ModelAndView("secteur","listerSecteur",listerSecteur);
     }
-    @GetMapping("/voir-secteur")
-    public ModelAndView voirSecteur(Model model,Integer spotId){
-        //Integer spotId = null;
+    @GetMapping("/voir-secteur/{spotId}")
+    public ModelAndView voirSecteur(Model model,@PathVariable Integer spotId){
         List voirSecteur = secteurService.voirSecteur(spotId);
         return new ModelAndView("voir-secteur","voirSecteur",voirSecteur);
     }

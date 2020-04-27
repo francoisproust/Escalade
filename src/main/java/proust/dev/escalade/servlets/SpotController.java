@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Spot;
@@ -21,6 +22,13 @@ public class SpotController {
     public ModelAndView listerSpot(Model model){
         List listerSpot = spotService.listerSpot();
         return new ModelAndView("spot","listerSpot",listerSpot);
+    }
+    @GetMapping("/voir-spot/{spotId}")
+    public ModelAndView voirSpot(Model model,@PathVariable Integer spotId){
+        List voirSpot = spotService.voirSpot(spotId);
+        model.addAttribute("voirSpot",voirSpot);
+        //return new ModelAndView("voir-spot","voirSpot",voirSpot);
+        return new ModelAndView("voir-spot");
     }
 
     @GetMapping("/add-spot")

@@ -15,7 +15,6 @@
 <h1>Liste des spots enregistrés</h1>
 <table>
     <tr>
-        <td>SpotId</td>
         <td>Nom</td>
         <td>Localisation</td>
         <td>Descriptif</td>
@@ -24,18 +23,16 @@
         <td>voir les secteurs</td>
         <td>topos</td>
     </tr>
-    <c:forEach items="${listerSpot}" var="listerSpot">
-        <tr>
-            <td>${listerSpot.spotId}</td>
-            <td>${listerSpot.nom}</td>
-            <td>${listerSpot.localisation}</td>
-            <td>${listerSpot.descriptif}</td>
-            <td>${listerSpot.flagAsso}</td>
-            <td>${listerSpot.utilisateur.pseudo}</td>
-            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>/${listerSpot.spotId}">ici</a></td>
-            <td>${listerSpot.topos}</td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td><c:out value="${voirSpot.spotId}"/></td>
+        <td><c:out value="${voirSpot.nom}"/></td>
+        <td><c:out value="${voirSpot.localisation}"/></td>
+        <td><c:out value="${voirSpot.descriptif}"/></td>
+        <td><c:out value="${voirSpot.flagAsso}"/></td>
+        <td><c:out value="${voirSpot.utilisateur.pseudo}"/></td>
+        <td>ici</td>
+        <td><c:out value="${voirSpot.topos}"/></td>
+    </tr>
 </table>
 </p>
 </body>

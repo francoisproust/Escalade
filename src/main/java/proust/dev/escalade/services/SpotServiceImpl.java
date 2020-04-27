@@ -30,7 +30,13 @@ public class SpotServiceImpl implements SpotService {
     }
 
     public void ajouterSpot(Spot spot){
-
         spotDao.save(spot);
+    }
+
+    @Override
+    public List voirSpot(Integer spotId) {
+        List voirSpot = new ArrayList();
+        voirSpot = spotDao.findAllBySpotId(spotId);
+        return voirSpot;
     }
 }
