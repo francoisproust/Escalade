@@ -3,6 +3,9 @@ package proust.dev.escalade.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proust.dev.escalade.hibernate.dao.SecteurDao;
+import proust.dev.escalade.hibernate.dao.SpotDao;
+import proust.dev.escalade.hibernate.entities.Secteur;
+import proust.dev.escalade.hibernate.entities.Spot;
 import proust.dev.escalade.services.interfaces.SecteurService;
 
 import java.util.ArrayList;
@@ -24,5 +27,13 @@ public class SecteurServiceImpl implements SecteurService {
         List voirSecteur = new ArrayList();
         voirSecteur = secteurDao.findAllBySpot_SpotId(spotId);
         return voirSecteur;
+    }
+
+    @Override
+    public void ajouterSecteur(Secteur secteur, Integer spotId) {
+        SpotDao spotDao = null;
+        Spot spot = spotDao.findBySpotId(spotId);
+        secteur.setSpot(spot);
+        secteurDao.save(secteur);
     }
 }

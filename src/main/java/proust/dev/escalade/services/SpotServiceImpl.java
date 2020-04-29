@@ -22,21 +22,16 @@ public class SpotServiceImpl implements SpotService {
         return listerSpot;
     }
 
-    @Override
-    public Optional<Spot> trouverSpot(Integer spotId) {
-        Optional<Spot> spot = Optional.of(new Spot());
-        spot = spotDao.findById(spotId);
-        return spot;
-    }
+
 
     public void ajouterSpot(Spot spot){
         spotDao.save(spot);
     }
 
     @Override
-    public List voirSpot(Integer spotId) {
-        List voirSpot = new ArrayList();
-        voirSpot = spotDao.findAllBySpotId(spotId);
+    public Spot voirSpot(Integer spotId) {
+        Spot voirSpot = null;
+        voirSpot = spotDao.findBySpotId(spotId);
         return voirSpot;
     }
 }

@@ -5,9 +5,12 @@
 <html>
 <head>
     <title>Liste des secteurs</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+<p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${spotId}">Ajouter un secteur</a>
+</p>
 <p>
 <h1>Liste des Secteurs</h1>
 <table>
@@ -22,7 +25,7 @@
             <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-spot")%>/${voirSecteur.spot.spotId}">ici</a></td>
             <td>${voirSecteur.nom}</td>
             <td>${voirSecteur.designation}</td>
-            <td>${voirSecteur.voie}</td>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-voie")%>/${voirSecteur.secteurId}">ici</a></td>
         </tr>
     </c:forEach>
 </table>

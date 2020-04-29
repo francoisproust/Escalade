@@ -5,11 +5,11 @@
 <html>
 <head>
     <title>Liste des spots</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<p class="ajouterSpot">
-    <a href="<%=request.getContextPath()+response.encodeURL("/add-spot")%>">Ajouter un spot</a>
+<p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${listerSpot.spotId}">Ajouter un secteur</a>
 </p>
 <p>
 <h1>Liste des spots enregistrés</h1>
@@ -30,7 +30,7 @@
         <td><c:out value="${voirSpot.descriptif}"/></td>
         <td><c:out value="${voirSpot.flagAsso}"/></td>
         <td><c:out value="${voirSpot.utilisateur.pseudo}"/></td>
-        <td>ici</td>
+        <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>/${listerSpot.spotId}">ici</a></td>
         <td><c:out value="${voirSpot.topos}"/></td>
     </tr>
 </table>

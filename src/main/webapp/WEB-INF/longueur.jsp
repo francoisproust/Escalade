@@ -10,11 +10,11 @@
 <html>
 <head>
     <title>longueur</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<p class="ajouterLongueur">
-    <a href="<%=request.getContextPath()+response.encodeURL("/add-longueur")%>">Ajouter une longueur</a>
+<p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("add-longueur")%>">Ajouter une longueur</a>
 </p>
 <p>
 <table>

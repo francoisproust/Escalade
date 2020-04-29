@@ -5,10 +5,10 @@
 <html>
 <head>
     <title>Liste des spots</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<p class="ajouterSpot">
+<p class="ajouter">
     <a href="<%=request.getContextPath()+response.encodeURL("/add-spot")%>">Ajouter un spot</a>
 </p>
 <p>
@@ -22,6 +22,7 @@
         <td>flagAsso</td>
         <td>utilisateur</td>
         <td>voir les secteurs</td>
+        <td>ajouter secteur</td>
         <td>topos</td>
     </tr>
     <c:forEach items="${listerSpot}" var="listerSpot">
@@ -33,6 +34,7 @@
             <td>${listerSpot.flagAsso}</td>
             <td>${listerSpot.utilisateur.pseudo}</td>
             <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>/${listerSpot.spotId}">ici</a></td>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${listerSpot.spotId}">ici</a></td>
             <td>${listerSpot.topos}</td>
         </tr>
     </c:forEach>

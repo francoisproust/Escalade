@@ -10,10 +10,10 @@
 <html>
 <head>
     <title>Liste des secteurs</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<p class="ajouterSpot">
+<p class="ajouter">
     <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>">Ajouter un secteur</a>
 </p>
 <p>

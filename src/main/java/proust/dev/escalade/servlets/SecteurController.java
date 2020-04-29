@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Secteur;
 
@@ -29,9 +31,16 @@ public class SecteurController {
     }
 
 
-    @GetMapping("/add-secteur")
-    public ModelAndView ajouterSecteur(Model model){
+    @GetMapping("/add-secteur/{spotId}")
+    public ModelAndView ajouterSecteur(Model model,@PathVariable Integer spotId){
+        model.addAttribute("spotId", spotId);
         model.addAttribute("secteur", new Secteur());
+        return new ModelAndView("add-secteur");
+    }
+
+    @PostMapping(value = "/add-secteur/{spotId}")
+    public ModelAndView ajouterSecteurPost(Model model, @ModelAttribute("secteur") Secteur secteur,@PathVariable Integer spotId) {
+        secteurService.ajouterSecteur(secteur, spotId);
         return new ModelAndView("add-secteur");
     }
 }

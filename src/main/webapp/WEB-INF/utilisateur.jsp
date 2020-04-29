@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>utilisateur</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <p>

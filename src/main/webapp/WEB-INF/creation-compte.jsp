@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Création compte</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <form:form method="POST" modelAttribute="utilisateur" action="/creation-compte">

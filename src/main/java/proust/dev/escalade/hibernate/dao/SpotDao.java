@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SpotDao extends JpaRepository<Spot,Integer> {
     List findAllBySpotId(Integer spotId);
+    Spot findBySpotId(Integer spotId);
 }
