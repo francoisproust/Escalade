@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Ajouter spot</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <form:form method="POST" modelAttribute="spot" action="add-spot">

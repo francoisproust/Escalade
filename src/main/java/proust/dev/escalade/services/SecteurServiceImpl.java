@@ -16,6 +16,9 @@ public class SecteurServiceImpl implements SecteurService {
     @Autowired
     SecteurDao secteurDao;
 
+    @Autowired
+    SpotDao spotDao;
+
     public List listerSecteur(){
         List listerSecteur = new ArrayList();
         listerSecteur = secteurDao.findAll();
@@ -31,7 +34,6 @@ public class SecteurServiceImpl implements SecteurService {
 
     @Override
     public void ajouterSecteur(Secteur secteur, Integer spotId) {
-        SpotDao spotDao = null;
         Spot spot = spotDao.findBySpotId(spotId);
         secteur.setSpot(spot);
         secteurDao.save(secteur);

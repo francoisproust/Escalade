@@ -4,15 +4,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Liste des secteurs</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Les secteurs</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <p class="ajouter">
     <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${spotId}">Ajouter un secteur</a>
 </p>
 <p>
-<h1>Liste des Secteurs</h1>
+<h1>Les secteurs du spot</h1>
 <table>
     <tr>
         <td>Spot</td>

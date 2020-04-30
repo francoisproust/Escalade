@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Ajouter voie</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <form:form method="POST" modelAttribute="voie" action="add-voie">

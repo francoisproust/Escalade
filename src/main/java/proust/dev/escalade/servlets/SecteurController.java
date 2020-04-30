@@ -3,14 +3,13 @@ package proust.dev.escalade.servlets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Secteur;
 
+import proust.dev.escalade.hibernate.entities.Spot;
 import proust.dev.escalade.services.interfaces.SecteurService;
+import proust.dev.escalade.services.interfaces.SpotService;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ import java.util.List;
 public class SecteurController {
     @Autowired
     SecteurService secteurService;
+    SpotService spotService;
 
     @GetMapping("/secteur")
     public ModelAndView listerSecteur(Model model){
@@ -40,7 +40,9 @@ public class SecteurController {
 
     @PostMapping(value = "/add-secteur/{spotId}")
     public ModelAndView ajouterSecteurPost(Model model, @ModelAttribute("secteur") Secteur secteur,@PathVariable Integer spotId) {
+        System.out.println(secteur.getSecteurId() + " " + spotId);
         secteurService.ajouterSecteur(secteur, spotId);
-        return new ModelAndView("add-secteur");
+        return voirSecteur(null,spotId);
+
     }
 }

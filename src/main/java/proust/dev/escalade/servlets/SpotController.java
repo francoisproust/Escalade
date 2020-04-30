@@ -26,6 +26,7 @@ public class SpotController {
     @GetMapping("/voir-spot/{spotId}")
     public ModelAndView voirSpot(Model model,@PathVariable Integer spotId){
         Spot voirSpot = spotService.voirSpot(spotId);
+        model.addAttribute("spotId",spotId);
         model.addAttribute("voirSpot",voirSpot);
         return new ModelAndView("voir-spot");
     }

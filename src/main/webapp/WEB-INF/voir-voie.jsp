@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Liste des voies</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <p>
