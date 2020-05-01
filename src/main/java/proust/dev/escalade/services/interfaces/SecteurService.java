@@ -8,4 +8,5 @@ public interface SecteurService {
     List listerSecteur();
     List voirSecteur(Integer spotId);
     void ajouterSecteur(Secteur secteur, Integer spotId);
+    Secteur visualiserSecteur(Integer secteurId);
 }

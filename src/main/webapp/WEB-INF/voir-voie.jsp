@@ -8,24 +8,28 @@
 <body>
 <p>
 <p class="ajouter">
-    <a href="<%=request.getContextPath()+response.encodeURL("/add-longueur")%>/${voirVoie.voieId}">Ajouter une longueur</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/add-voie")%>/${secteurId}">Ajouter une voie</a>
 </p>
 <h1>Liste des voies</h1>
 <table>
     <tr>
+        <td>Secteur</td>
         <td>Nom</td>
         <td>Descriptif</td>
         <td>relai</td>
         <td>nbRelai</td>
         <td>Nombre de longueurs</td>
     </tr>
-    <tr>
-        <td>${voirVoie.nom}</td>
-        <td>${voirVoie.designation}</td>
-        <td>${voirVoie.relai}</td>
-        <td>${voirVoie.nbRelai}</td>
-        <td>${voirVoie.longueurs}</td>
-    </tr>
+    <c:forEach items="${voirVoie}" var="voirVoie">
+        <tr>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur2")%>/${voirVoie.secteur.secteurId}">ici</a></td>
+            <td>${voirVoie.nom}</td>
+            <td>${voirVoie.designation}</td>
+            <td>${voirVoie.relai}</td>
+            <td>${voirVoie.nbRelai}</td>
+            <td>${voirVoie.longueurs}</td>
+        </tr>
+    </c:forEach>
 </table>
 </p>
 </body>

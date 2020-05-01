@@ -25,9 +25,15 @@ public class SecteurController {
         return new ModelAndView("secteur","listerSecteur",listerSecteur);
     }
     @GetMapping("/voir-secteur/{spotId}")
-    public ModelAndView voirSecteur(Model model,@PathVariable Integer spotId){
+    public ModelAndView voirSecteurParSpotId(Model model,@PathVariable Integer spotId){
         List voirSecteur = secteurService.voirSecteur(spotId);
         return new ModelAndView("voir-secteur","voirSecteur",voirSecteur);
+    }
+
+    @GetMapping("/voir-secteur2/{secteurId}")
+    public ModelAndView voirSecteurParSecteurId(Model model,@PathVariable Integer secteurId){
+        Secteur voirSecteur = secteurService.visualiserSecteur(secteurId);
+        return new ModelAndView("voir-secteur2","voirSecteur",voirSecteur);
     }
 
 
@@ -42,7 +48,7 @@ public class SecteurController {
     public ModelAndView ajouterSecteurPost(Model model, @ModelAttribute("secteur") Secteur secteur,@PathVariable Integer spotId) {
         System.out.println(secteur.getSecteurId() + " " + spotId);
         secteurService.ajouterSecteur(secteur, spotId);
-        return voirSecteur(null,spotId);
+        return voirSecteurParSpotId(null,spotId);
 
     }
 }

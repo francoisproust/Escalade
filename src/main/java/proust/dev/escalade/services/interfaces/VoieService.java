@@ -9,5 +9,5 @@ public interface VoieService {
 
     List voirVoie(Integer secteurId);
 
-    void ajouterVoie(Voie voie);
+    void ajouterVoie(Voie voie,Integer secteurId);
 }

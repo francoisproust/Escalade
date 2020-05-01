@@ -38,4 +38,13 @@ public class SecteurServiceImpl implements SecteurService {
         secteur.setSpot(spot);
         secteurDao.save(secteur);
     }
+
+    @Override
+    public Secteur visualiserSecteur(Integer secteurId) {
+        Secteur secteur;
+        secteur = secteurDao.findBySecteurId(secteurId);
+        return secteur;
+    }
+
+
 }

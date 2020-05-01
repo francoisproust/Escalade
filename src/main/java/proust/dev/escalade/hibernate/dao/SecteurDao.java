@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface SecteurDao extends JpaRepository<Secteur,Integer> {
     List findAllBySpot_SpotId(Integer spotId);
+    Secteur findBySecteurId(Integer secteurId);
 }

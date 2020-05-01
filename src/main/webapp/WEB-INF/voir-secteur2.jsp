@@ -9,7 +9,7 @@
 </head>
 <body>
 <p class="ajouter">
-    <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${spotId}">Ajouter un secteur</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${voirSecteur.spot.spotId}">Ajouter un secteur</a>
 </p>
 <p>
 <h1>Les secteurs du spot</h1>
@@ -20,14 +20,12 @@
         <td>Descriptif</td>
         <td>Voir les voies</td>
     </tr>
-    <c:forEach items="${voirSecteur}" var="voirSecteur">
-        <tr>
-            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-spot")%>/${voirSecteur.spot.spotId}">ici</a></td>
-            <td>${voirSecteur.nom}</td>
-            <td>${voirSecteur.designation}</td>
-            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-voie")%>/${voirSecteur.secteurId}">ici</a></td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-spot")%>/${voirSecteur.spot.spotId}">ici</a></td>
+        <td>${voirSecteur.nom}</td>
+        <td>${voirSecteur.designation}</td>
+        <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-voie")%>/${voirSecteur.secteurId}">ici</a></td>
+    </tr>
 </table>
 </p>
 </body>

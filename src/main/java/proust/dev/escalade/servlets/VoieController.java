@@ -36,8 +36,8 @@ public class VoieController {
         return new ModelAndView("add-voie");
     }
     @PostMapping(value = "/add-voie/{secteurId}")
-    public ModelAndView ajouterVoiePost(Model model,@ModelAttribute Voie voie){
-        voieService.ajouterVoie(voie);
-        return new ModelAndView("add-voie");
+    public ModelAndView ajouterVoiePost(Model model,@ModelAttribute Voie voie,@PathVariable Integer secteurId){
+        voieService.ajouterVoie(voie, secteurId);
+        return voirVoie(null,secteurId);
     }
 }
