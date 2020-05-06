@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface VoieDao extends JpaRepository<Voie,Integer> {
     List findAllBySecteur_SecteurId(Integer secteurId);
+    Voie findByVoieId(Integer voieId);
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-    <form:form method="POST" modelAttribute="longueur" action="add-longueur">
+    <form:form method="POST" modelAttribute="longueur" action="./${voieId}">
         <form:input type="text" path="nom" class="form-control form-control-sm mb-3" placeholder="Nom"
                     autofocus="true"/>
 
@@ -19,7 +19,11 @@
 
         <form:input type="text" path="spits" class="form-control form-control-sm mb-3"
                     placeholder="nombre de spits"/>
-
+        <form:select path="cotation">
+                <c:forEach items="${listCotation}" var="cotation">
+                 <form:option value="${cotation.cotationId}">${cotation.indice}</form:option>
+                </c:forEach>
+        </form:select>
         <input type="submit" class="btn btn-success" value="Ajouter"/>
         <input type="reset" class="btn btn-danger" value="Reset"/>
         <a class="btn btn-danger" href="/">Cancel</a>

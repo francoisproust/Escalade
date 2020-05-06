@@ -17,7 +17,6 @@ import java.util.List;
 public class SecteurController {
     @Autowired
     SecteurService secteurService;
-    SpotService spotService;
 
     @GetMapping("/secteur")
     public ModelAndView listerSecteur(Model model){
@@ -30,13 +29,6 @@ public class SecteurController {
         return new ModelAndView("voir-secteur","voirSecteur",voirSecteur);
     }
 
-    @GetMapping("/voir-secteur2/{secteurId}")
-    public ModelAndView voirSecteurParSecteurId(Model model,@PathVariable Integer secteurId){
-        Secteur voirSecteur = secteurService.visualiserSecteur(secteurId);
-        return new ModelAndView("voir-secteur2","voirSecteur",voirSecteur);
-    }
-
-
     @GetMapping("/add-secteur/{spotId}")
     public ModelAndView ajouterSecteur(Model model,@PathVariable Integer spotId){
         model.addAttribute("spotId", spotId);
@@ -46,9 +38,7 @@ public class SecteurController {
 
     @PostMapping(value = "/add-secteur/{spotId}")
     public ModelAndView ajouterSecteurPost(Model model, @ModelAttribute("secteur") Secteur secteur,@PathVariable Integer spotId) {
-        System.out.println(secteur.getSecteurId() + " " + spotId);
         secteurService.ajouterSecteur(secteur, spotId);
         return voirSecteurParSpotId(null,spotId);
-
     }
 }

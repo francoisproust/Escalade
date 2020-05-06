@@ -18,16 +18,16 @@
         <td>Descriptif</td>
         <td>relai</td>
         <td>nbRelai</td>
-        <td>Nombre de longueurs</td>
+        <td>voir les longueurs</td>
     </tr>
     <c:forEach items="${voirVoie}" var="voirVoie">
         <tr>
-            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur2")%>/${voirVoie.secteur.secteurId}">ici</a></td>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>/${voirVoie.secteur.spot.spotId}">ici</a></td>
             <td>${voirVoie.nom}</td>
             <td>${voirVoie.designation}</td>
             <td>${voirVoie.relai}</td>
             <td>${voirVoie.nbRelai}</td>
-            <td>${voirVoie.longueurs}</td>
+            <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-longueur")%>/${voirVoie.voieId}">ici</a></td>
         </tr>
     </c:forEach>
 </table>
