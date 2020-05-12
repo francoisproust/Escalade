@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
+<h1 class="logo">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
+</h1>
 <form:form method="post" name="add-secteur" modelAttribute="secteur" action="./${spotId}">
 
     <form:input type="text" path="nom" class="form-control form-control-sm mb-3" placeholder="Nom"

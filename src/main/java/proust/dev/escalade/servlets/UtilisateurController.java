@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.dao.*;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
@@ -35,7 +36,17 @@ public class UtilisateurController {
     }
     @PostMapping(value = "/creation-compte")
     public ModelAndView creationComptePost(Model model, @ModelAttribute("utilisateur") Utilisateur utilisateur) {
+        utilisateurService.ajouterUtilisateur(utilisateur);
+        return new ModelAndView("home" );
+    }
 
-        return new ModelAndView("creation-compte" );
+    @GetMapping(value = "/login")
+    public ModelAndView login(Model model){
+        return new ModelAndView("login");
+    }
+
+    @PostMapping(value = "/login")
+    public ModelAndView loginPost(Model model, @RequestParam("username") String username, @RequestParam("password") String password){
+        return new ModelAndView("home");
     }
 }

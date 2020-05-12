@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-<p class="ajouter">
-    <a href="<%=request.getContextPath()+response.encodeURL("/add-spot")%>">Ajouter un spot</a>
-</p>
+    <a class="accueil" href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
+    <a class="ajouter" href="<%=request.getContextPath()+response.encodeURL("/add-spot")%>">Ajouter un spot</a>
 <p>
-<h1>Liste des spots enregistrés</h1>
+<h1 class="logo">
+    <img src="css/logo.png">
+</h1>
 <table>
     <tr>
         <td>SpotId</td>

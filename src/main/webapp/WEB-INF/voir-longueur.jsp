@@ -6,11 +6,14 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-<p class="ajouter">
+<p>
+    <a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/add-longueur")%>/${voieId}">Ajouter une longueur</a>
 </p>
 <p>
-<h1>Les longueurs du secteur</h1>
+<h1 class="logo">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
+</h1>
 <table>
     <tr>
         <td>Voir les voies</td>

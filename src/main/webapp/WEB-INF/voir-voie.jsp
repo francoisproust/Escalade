@@ -8,9 +8,12 @@
 <body>
 <p>
 <p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/add-voie")%>/${secteurId}">Ajouter une voie</a>
 </p>
-<h1>Liste des voies</h1>
+<h1 class="logo">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
+</h1>
 <table>
     <tr>
         <td>Secteur</td>

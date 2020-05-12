@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-<h1>
-    Les amis de l'escalade
+<p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("/login")%>">Se connecter</a>
+</p>
+<h1 class="logo">
+    <img src="css/logo.png">
 </h1>
-<p>
+<p class="home">
     Bienvenue sur le site de notre association "les amis de l'escalade" qui a pour but de partager notre passion commune autour de l'escalade.<br/>
     Ce site a pour but de partager les différents spots que nous avons et pour les membres inscrits de vous mettre en relation pour partager vos topos. <br/>
     Bonne visite à tous!

@@ -1,25 +1,37 @@
-p
+body
 {
-    color: blue; /* Les paragraphes seront en bleu */
+    background-image: url("backgound.png");
+    opacity: 10;
+}
+
+p,h1,a,table
+{
+    color: white; /* Les paragraphes seront en bleu */
 }
 table {
-    border-width:1px;
+    border-width:2px;
     border-style:solid;
-    border-color:black;
+    border-color:white;
     border-collapse:collapse;
-    width:50%;
+    width:auto;
     text-align:center;
 }
 td {
-    border-width:1px;
+    border-width:2px;
     border-style:solid;
-    border-color:red;
-    width:50%;
+    border-color:white;
+    width:auto;
     text-align:center;
 }
 h1{
     text-align:center;
 }
-.ajouter{
-    text-align: right;
+
+.home
+{
+    text-align: center;
+}
+.logo
+{
+    text-align: center;
 }

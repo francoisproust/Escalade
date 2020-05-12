@@ -17,7 +17,9 @@
     <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>">Ajouter un secteur</a>
 </p>
 <p>
-<h1>Liste des Secteurs</h1>
+<h1 class="logo">
+    <img src="css/logo.png">
+</h1>
 <table>
     <tr>
         <td></td>

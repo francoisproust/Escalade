@@ -17,6 +17,9 @@
     <a href="<%=request.getContextPath()+response.encodeURL("add-longueur")%>">Ajouter une longueur</a>
 </p>
 <p>
+<h1 class="logo">
+    <img src="css/logo.png">
+</h1>
 <table>
     <tr>
         <td>Nom</td>
