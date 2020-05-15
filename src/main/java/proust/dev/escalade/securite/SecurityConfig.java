@@ -5,25 +5,31 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import proust.dev.escalade.services.interfaces.UtilisateurService;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-    private final UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig( UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    private UtilisateurService utilisateurService;
+
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(utilisateurService);
     }
-
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(BCryptManagerUtil.passwordencoder());
+    @Bean
+    public AuthenticationProvider getProvider() {
+        AppAuthProvider provider = new AppAuthProvider();
+        provider.setUserDetailsService(utilisateurService);  /*STDI */
+        return provider;
     }
 
     @Override
@@ -32,17 +38,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/").failureUrl("/connexion?error=loginError")
+               // .defaultSuccessUrl("/").failureUrl("/connexion?error=loginError")
+                .defaultSuccessUrl("/").failureUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/connexion.jsp")
+              //  .logoutSuccessUrl("/connexion.jsp")
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/add*/**").authenticated()
                 .antMatchers("/utilisateur/**").authenticated()
                 .anyRequest().permitAll();
+    }
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

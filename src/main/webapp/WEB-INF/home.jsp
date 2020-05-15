@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-<p class="ajouter">
+<p>
     <a href="<%=request.getContextPath()+response.encodeURL("/login")%>">Se connecter</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/creation-compte")%>">Créer un compte</a>
 </p>
 <h1 class="logo">
     <img src="css/logo.png">

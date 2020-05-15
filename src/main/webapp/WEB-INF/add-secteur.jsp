@@ -19,6 +19,6 @@
                 placeholder="designation"/>
 <input type="submit" class="btn btn-success" value="Ajouter"/>
 <input type="reset" class="btn btn-danger" value="Reset"/>
-<a class="btn btn-danger" href="/">Cancel</a>
+<a class="btn btn-danger" href="./">Cancel</a>
 </form:form>
 </html>

@@ -6,14 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import proust.dev.escalade.hibernate.dao.*;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
-import proust.dev.escalade.services.UtilisateurServiceImpl;
 import proust.dev.escalade.services.interfaces.UtilisateurService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,11 +38,13 @@ public class UtilisateurController {
 
     @GetMapping(value = "/login")
     public ModelAndView login(Model model){
+        model.addAttribute("utilisateur",new Utilisateur());
         return new ModelAndView("login");
     }
 
     @PostMapping(value = "/login")
-    public ModelAndView loginPost(Model model, @RequestParam("username") String username, @RequestParam("password") String password){
+    public ModelAndView loginPost(Model model, @ModelAttribute("utilisateur") Utilisateur utilisateur){
+
         return new ModelAndView("home");
     }
 }

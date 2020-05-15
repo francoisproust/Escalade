@@ -13,7 +13,7 @@ public class Longueur implements Serializable {
     private String nom;
     @Column (name = "designation",nullable = false,length = 255)
     private String designation;
-    @Column (name = "taille_longueur",nullable = false)
+    @Column (name = "longueur",nullable = false)
     private Integer tailleLongueur;
     @Column (name = "spits",nullable = false)
     private Integer spits;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-    <form:form method="POST" modelAttribute="utilisateur" action="/creation-compte">
+    <form:form method="POST" modelAttribute="utilisateur" action="./creation-compte">
         <form:input type="text" path="nom" class="form-control form-control-sm mb-3" placeholder="Nom"
                     autofocus="true"/>
 
@@ -22,9 +22,9 @@
 
         <form:input type="text" path="password" class="form-control form-control-sm mb-3"
                     placeholder="Mot De Passe"/>
-        <input type="submit" class="btn btn-success" value="Ajouter"/>
+        <input type="submit" class="btn btn-success" value="Se connecter"/>
         <input type="reset" class="btn btn-danger" value="Reset"/>
-        <a class="btn btn-danger" href="/">Cancel</a>
+        <a class="btn btn-danger" href="./">Cancel</a>
     </form:form>
 </body>
 </html>
