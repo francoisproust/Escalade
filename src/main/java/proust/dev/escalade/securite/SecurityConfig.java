@@ -28,19 +28,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Bean
     public AuthenticationProvider getProvider() {
         AppAuthProvider provider = new AppAuthProvider();
-        provider.setUserDetailsService(utilisateurService);  /*STDI */
+        provider.setUserDetailsService(utilisateurService);
         return provider;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
-                .and()
+                .disable()
+                .authenticationProvider(getProvider())
                 .formLogin()
                 .loginPage("/login")
                // .defaultSuccessUrl("/").failureUrl("/connexion?error=loginError")
                 .defaultSuccessUrl("/").failureUrl("/login")
-                .usernameParameter("username").passwordParameter("password")
+                .usernameParameter("pseudo").passwordParameter("password")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
