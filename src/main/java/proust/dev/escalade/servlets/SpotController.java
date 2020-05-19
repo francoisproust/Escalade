@@ -2,6 +2,8 @@
 package proust.dev.escalade.servlets;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Spot;
+import proust.dev.escalade.hibernate.entities.Utilisateur;
 import proust.dev.escalade.services.interfaces.SpotService;
 import java.util.List;
 
@@ -39,8 +42,10 @@ public class SpotController {
 
     @PostMapping(value = "/add-spot")
     public ModelAndView ajouterSpotPost(Model model, @ModelAttribute("spot") Spot spot) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        spot.setUtilisateur((Utilisateur) auth.getPrincipal());
         spotService.ajouterSpot(spot);
-        return new ModelAndView("add-spot");
+        return new ModelAndView("spot");
     }
 
 }

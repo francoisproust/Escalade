@@ -1,6 +1,9 @@
 package proust.dev.escalade.servlets;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +41,10 @@ public class UtilisateurController {
 
     @GetMapping(value = "/login")
     public ModelAndView login(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            return new ModelAndView("redirect:/");
+        }
         model.addAttribute("utilisateur",new Utilisateur());
         return new ModelAndView("login");
     }

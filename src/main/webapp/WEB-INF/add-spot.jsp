@@ -18,9 +18,6 @@
     <form:input type="text" path="localisation" class="form-control form-control-sm mb-3"
                 placeholder="Localisation"/>
 
-    <form:input type="text" path="utilisateur" class="form-control form-control-sm mb-3"
-                placeholder="utilisateur"/>
-
     <form:input type="text" path="descriptif" class="form-control form-control-sm mb-3" placeholder="Descriptif"/>
 
     <form:input type="text" path="secteurs" class="form-control form-control-sm mb-3"

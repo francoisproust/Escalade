@@ -16,7 +16,7 @@
 </h1>
 <table>
     <tr>
-        <td>Voir les voies</td>
+        <td>Voir la voie</td>
         <td>Nom</td>
         <td>Descriptif</td>
         <td>Longueur</td>

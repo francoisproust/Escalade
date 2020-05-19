@@ -32,7 +32,7 @@ public class LongueurController {
     @GetMapping("voir-longueur/{voieId}")
     public  ModelAndView voirLongueur(Model model,@PathVariable Integer voieId){
         List voirLongueur = longueurService.voirLongueur(voieId);
-        return  new ModelAndView("voir-longueur","voir-longueur",voirLongueur);
+        return  new ModelAndView("voir-longueur","voirLongueur",voirLongueur);
     }
 
     @GetMapping("/add-longueur/{voieId}")
