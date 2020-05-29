@@ -1,5 +1,7 @@
 package proust.dev.escalade.hibernate.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,9 +17,10 @@ public class Topo implements Serializable {
     @Column(name = "isbn",nullable = false,length = 13)
     private String isbn;
     @Column(name="parution",nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date parution;
     @Column (name="disponibilite",nullable = false)
-    private Boolean disponibilite;
+    private String disponibilite;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Utilisateur utilisateur;
@@ -61,11 +64,11 @@ public class Topo implements Serializable {
         this.parution = parution;
     }
 
-    public Boolean getDisponibilite() {
+    public String getDisponibilite() {
         return disponibilite;
     }
 
-    public void setDisponibilite(Boolean disponibilite) {
+    public void setDisponibilite(String disponibilite) {
         this.disponibilite = disponibilite;
     }
 

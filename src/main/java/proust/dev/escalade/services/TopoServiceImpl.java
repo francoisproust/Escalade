@@ -8,6 +8,7 @@ import proust.dev.escalade.services.interfaces.TopoService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopoServiceImpl implements TopoService {
@@ -26,5 +27,15 @@ public class TopoServiceImpl implements TopoService {
         topoDao.save(topo);
     }
 
+    @Override
+    public Topo chercherTopo(Integer topoId) {
+        Optional<Topo> topo = topoDao.findById(topoId);
+        return topo.isPresent() ? topo.get() : null;
+    }
 
+    @Override
+    public void topoPreReservation(Topo topo) {
+        topo.setDisponibilite("En attente");
+        topoDao.save(topo);
+    }
 }

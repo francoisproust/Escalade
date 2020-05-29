@@ -9,6 +9,7 @@
 <p>
     <a href="<%=request.getContextPath()+response.encodeURL("/login")%>">Se connecter</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/creation-compte")%>">Créer un compte</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/add-topo")%>">Ajouter un Topo</a>
 </p>
 <h1 class="logo">
     <img src="css/logo.png">
@@ -19,6 +20,7 @@
     Bonne visite à tous!
 </p>
 <p>
+    <a href="<%=request.getContextPath()+response.encodeURL("/topo")%>">Voir les topos</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/spot")%>">Voir les spots</a>
 </p>
 

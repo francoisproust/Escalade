@@ -15,6 +15,7 @@ import proust.dev.escalade.hibernate.entities.Utilisateur;
 import proust.dev.escalade.services.interfaces.TopoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class TopoController {
@@ -37,8 +38,16 @@ public class TopoController {
     public ModelAndView ajouterTopoPost(Model model, @ModelAttribute("topo") Topo topo){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         topo.setUtilisateur((Utilisateur) auth.getPrincipal());
-        topo.setDisponibilite(true);
+        topo.setDisponibilite("disponible");
         topoService.ajouterTopo(topo);
         return listerTopo(null);
     }
+
+    @GetMapping("/reserver-topo/{topoId}")
+    public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId){
+        Topo reserverTopo = topoService.chercherTopo(topoId);
+        topoService.topoPreReservation(reserverTopo);
+        return listerTopo(null);
+    }
+
 }

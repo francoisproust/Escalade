@@ -9,6 +9,7 @@
 </head>
 <body>
 <p class="ajouter">
+    <a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${spotId}">Ajouter un secteur</a>
 </p>
 <p>
