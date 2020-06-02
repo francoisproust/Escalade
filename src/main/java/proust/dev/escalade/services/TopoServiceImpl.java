@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proust.dev.escalade.hibernate.dao.TopoDao;
 import proust.dev.escalade.hibernate.entities.Topo;
+import proust.dev.escalade.hibernate.entities.Utilisateur;
 import proust.dev.escalade.services.interfaces.TopoService;
 
 import java.util.ArrayList;
@@ -34,8 +35,14 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public void topoPreReservation(Topo topo) {
-        topo.setDisponibilite("En attente");
+    public void topoReservation(Topo topo, String statut) {
+        topo.setDisponibilite(statut);
         topoDao.save(topo);
+    }
+
+    @Override
+    public List listerTopoParUtilisateur(Utilisateur utilisateur) {
+        List mesTopos = topoDao.findAllByUtilisateur_UserId(utilisateur.getUserId());
+        return mesTopos;
     }
 }

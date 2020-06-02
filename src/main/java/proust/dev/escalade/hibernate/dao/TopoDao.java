@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TopoDao extends JpaRepository<Topo,Integer> {
+    List findAllByUtilisateur_UserId(Integer userId);
 }
