@@ -46,7 +46,7 @@ public class TopoController {
     @GetMapping("/reserver-topo/{topoId}")
     public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId, String statut){
         Topo reserverTopo = topoService.chercherTopo(topoId);
-        topoService.topoReservation(reserverTopo,statut);
+        topoService.topoReservation(reserverTopo);
         return listerTopo(null);
     }
 

@@ -37,7 +37,6 @@
                 <td>${listerTopo.disponibilite}</td>
                 <td>
                     <c:if test="${listerTopo.disponibilite == 'En attente'}">
-                        <c:set var="statut" value="indisponible"></c:set>
                         <a href="<%=request.getContextPath()+response.encodeURL("/reserver-topo")%>/${listerTopo.topoId}">valider</a>
                     </c:if>
                 </td>

@@ -32,7 +32,6 @@
             <td>${listerTopo.utilisateur.pseudo}</td>
             <td>
                 <c:if test="${listerTopo.disponibilite == 'disponible'}">
-                    <c:set var = "statut" value= "en attente"></c:set>
                     <a href="<%=request.getContextPath()+response.encodeURL("/reserver-topo")%>/${listerTopo.topoId}">Réserver</a>
                 </c:if>
             </td>

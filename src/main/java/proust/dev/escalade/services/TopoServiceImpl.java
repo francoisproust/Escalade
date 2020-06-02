@@ -35,8 +35,11 @@ public class TopoServiceImpl implements TopoService {
     }
 
     @Override
-    public void topoReservation(Topo topo, String statut) {
-        topo.setDisponibilite(statut);
+    public void topoReservation(Topo topo) {
+        if (topo.getDisponibilite().equals("En attente")){
+            topo.setDisponibilite("Réservé");
+        }else
+            topo.setDisponibilite("En attente");
         topoDao.save(topo);
     }
 
