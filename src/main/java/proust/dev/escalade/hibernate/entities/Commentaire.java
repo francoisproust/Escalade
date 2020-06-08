@@ -48,6 +48,14 @@ public class Commentaire implements Serializable {
         return utilisateur;
     }
 
+    public Integer getSpotId() {
+        return spotId;
+    }
+
+    public void setSpotId(Integer spotId) {
+        this.spotId = spotId;
+    }
+
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }

@@ -9,6 +9,7 @@
 <p>
     <a href="<%=request.getContextPath()+response.encodeURL("/login")%>">Se connecter</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/creation-compte")%>">Créer un compte</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/mon-profil")%>">Mon compte</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/add-topo")%>">Ajouter un Topo</a>
 </p>
 <h1 class="logo">

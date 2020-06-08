@@ -44,5 +44,22 @@
         </c:forEach>
     </table>
 </p>
+<p>
+    <U>Mes Commentaires</U></br>
+    <table>
+        <tr>
+            <td>voir le site</td>
+            <td>Commentaire</td>
+            <td>supprimer le commentaire?</td>
+        </tr>
+        <c:forEach items="${commentaire}" var="commentaires">
+            <tr>
+                <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-spot")%>/${commentaires.spotId}">ici</a></td>
+                <td>${commentaires.description}</td>
+                <td><a href="<%=request.getContextPath()+response.encodeURL("/supprimer-commentaire")%>/${commentaires.comId}">ici</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</p>
 </body>
 </html>

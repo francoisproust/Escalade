@@ -24,7 +24,6 @@ public class TopoController {
     @GetMapping("/topo")
     public ModelAndView listerTopo(Model model){
         List listerTopo = topoService.listerTopo();
-        model.addAttribute("statut");
         return new ModelAndView("topo","listerTopo",listerTopo);
     }
 
@@ -44,8 +43,9 @@ public class TopoController {
     }
 
     @GetMapping("/reserver-topo/{topoId}")
-    public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId, String statut){
+    public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId){
         Topo reserverTopo = topoService.chercherTopo(topoId);
+        System.out.println(reserverTopo.toString());
         topoService.topoReservation(reserverTopo);
         return listerTopo(null);
     }

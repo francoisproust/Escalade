@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
+import proust.dev.escalade.services.interfaces.CommentaireService;
 import proust.dev.escalade.services.interfaces.TopoService;
 import proust.dev.escalade.services.interfaces.UtilisateurService;
 
@@ -19,11 +20,15 @@ public class MyProfileController {
     private UtilisateurService utilisateurService;
     @Autowired
     private TopoService topoService;
+    @Autowired
+    private CommentaireService commentaireService;
 
     @GetMapping("/mon-profil")
     public ModelAndView monprofil(Model model){
         Authentication utilisateur = SecurityContextHolder.getContext().getAuthentication();
         List listeTopo = topoService.listerTopoParUtilisateur((Utilisateur) utilisateur.getPrincipal());
+        List commentaires = commentaireService.listerCommentaire((Utilisateur) utilisateur.getPrincipal());
+        model.addAttribute("commentaire",commentaires);
         model.addAttribute("utilisateur",(Utilisateur) utilisateur.getPrincipal());
         model.addAttribute("topos",listeTopo);
         return new ModelAndView("mon-profil");

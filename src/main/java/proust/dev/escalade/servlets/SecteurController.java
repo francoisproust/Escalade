@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Secteur;
 
 import proust.dev.escalade.hibernate.entities.Spot;
+import proust.dev.escalade.services.interfaces.CommentaireService;
 import proust.dev.escalade.services.interfaces.SecteurService;
 import proust.dev.escalade.services.interfaces.SpotService;
 
@@ -17,6 +18,8 @@ import java.util.List;
 public class SecteurController {
     @Autowired
     SecteurService secteurService;
+    @Autowired
+    CommentaireService commentaireService;
 
     @GetMapping("/secteur")
     public ModelAndView listerSecteur(Model model){
@@ -26,6 +29,8 @@ public class SecteurController {
     @GetMapping("/voir-secteur/{spotId}")
     public ModelAndView voirSecteurParSpotId(Model model,@PathVariable Integer spotId){
         List voirSecteur = secteurService.voirSecteur(spotId);
+        List commentaire = commentaireService.voirCommentaire(spotId);
+        model.addAttribute("commentaire",commentaire);
         return new ModelAndView("voir-secteur","voirSecteur",voirSecteur);
     }
 
