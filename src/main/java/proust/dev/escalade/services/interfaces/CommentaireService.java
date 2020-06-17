@@ -12,4 +12,5 @@ public interface CommentaireService {
     void supprimerCommentaire(Integer comId);
     void modifierCommentaire(Commentaire commentaire);
     Commentaire voirCommentaireById(Integer comId);
+    List listerTousCommentaires();
 }

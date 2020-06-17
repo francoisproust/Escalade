@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
-
+<a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
+<c:if test="${utilisateur.typeUser.libelleUser == 'administrateur' || utilisateur.typeUser.libelleUser == 'amis'}">
+    <a href="<%=request.getContextPath()+response.encodeURL("/les-commentaires")%>">Les commentaires</a>
+</c:if>
 <p>
 <h1 class="logo">
     <img src="css/logo.png">

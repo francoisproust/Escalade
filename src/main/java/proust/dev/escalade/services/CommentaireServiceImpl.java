@@ -6,9 +6,6 @@ import proust.dev.escalade.hibernate.dao.CommentaireDao;
 import proust.dev.escalade.hibernate.entities.Commentaire;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
 import proust.dev.escalade.services.interfaces.CommentaireService;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -53,5 +50,11 @@ public class CommentaireServiceImpl implements CommentaireService {
     public Commentaire voirCommentaireById(Integer comId) {
         Commentaire commentaire = commentaireDao.findByComId(comId);
         return commentaire;
+    }
+
+    @Override
+    public List listerTousCommentaires() {
+        List commentaires = commentaireDao.findAll();
+        return commentaires;
     }
 }

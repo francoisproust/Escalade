@@ -14,6 +14,8 @@ import proust.dev.escalade.hibernate.entities.Commentaire;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
 import proust.dev.escalade.services.interfaces.CommentaireService;
 
+import java.util.List;
+
 
 @Controller
 public class CommentaireController {
@@ -53,5 +55,12 @@ public class CommentaireController {
         commentaireExistant.setDescription(commentaire.getDescription());
         commentaireService.modifierCommentaire(commentaireExistant);
         return new ModelAndView("home");
+    }
+
+    @GetMapping("/les-commentaires")
+    public ModelAndView lesCommentaires(Model model){
+        List lesCommentaires = commentaireService.listerTousCommentaires();
+        model.addAttribute("lesCommentaires",lesCommentaires);
+        return new ModelAndView("les-commentaires");
     }
 }
