@@ -10,4 +10,6 @@ public interface CommentaireService {
     void ajouterCommentaire(Integer spotId, Commentaire commentaire);
     List listerCommentaire(Utilisateur utilisateur);
     void supprimerCommentaire(Integer comId);
+    void modifierCommentaire(Commentaire commentaire);
+    Commentaire voirCommentaireById(Integer comId);
 }

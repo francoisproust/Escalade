@@ -17,8 +17,6 @@ import java.util.List;
 @Controller
 public class MyProfileController {
     @Autowired
-    private UtilisateurService utilisateurService;
-    @Autowired
     private TopoService topoService;
     @Autowired
     private CommentaireService commentaireService;

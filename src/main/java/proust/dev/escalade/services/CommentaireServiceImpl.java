@@ -42,4 +42,16 @@ public class CommentaireServiceImpl implements CommentaireService {
         Commentaire commentaire = commentaireDao.findByComId(comId);
         commentaireDao.delete(commentaire);
     }
+
+    @Override
+    public void modifierCommentaire(Commentaire commentaire) {
+       commentaireDao.save(commentaire);
+
+    }
+
+    @Override
+    public Commentaire voirCommentaireById(Integer comId) {
+        Commentaire commentaire = commentaireDao.findByComId(comId);
+        return commentaire;
+    }
 }

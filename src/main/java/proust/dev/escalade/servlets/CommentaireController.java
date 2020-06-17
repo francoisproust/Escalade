@@ -40,4 +40,18 @@ public class CommentaireController {
         commentaireService.supprimerCommentaire(comId);
         return new ModelAndView("suppression-commentaire");
     }
+
+    @GetMapping("/modifier-commentaire/{comId}")
+    public ModelAndView modifierCommentaire(Model model,@PathVariable Integer comId){
+        Commentaire commentaire = new Commentaire();
+        model.addAttribute("commentaire",commentaire);
+        return new ModelAndView("modifier-commentaire");
+    }
+    @PostMapping(value = "/modifier-commentaire/{comId}" )
+    public ModelAndView modifierCommentairePost(Model model,@ModelAttribute("commentaire") Commentaire commentaire,@PathVariable Integer comId){
+        Commentaire commentaireExistant = commentaireService.voirCommentaireById(comId);
+        commentaireExistant.setDescription(commentaire.getDescription());
+        commentaireService.modifierCommentaire(commentaireExistant);
+        return new ModelAndView("home");
+    }
 }

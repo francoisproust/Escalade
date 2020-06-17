@@ -53,6 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/add*/**").authenticated()
                 .antMatchers("/mon-profil").authenticated()
                 .antMatchers("/utilisateur/**").authenticated()
+                .antMatchers("/modifier*/**").authenticated()
+                .antMatchers("/suppression*/**").authenticated()
                 .anyRequest().permitAll();
     }
     @Bean
