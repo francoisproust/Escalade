@@ -22,6 +22,7 @@
 
         <form:input type="text" path="spits" class="form-control form-control-sm mb-3"
                     placeholder="nombre de spits"/>
+
         <form:select path="cotation">
                 <c:forEach items="${listCotation}" var="cotation">
                  <form:option value="${cotation.cotationId}">${cotation.indice}</form:option>

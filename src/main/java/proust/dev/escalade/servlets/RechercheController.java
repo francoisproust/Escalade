@@ -19,17 +19,17 @@ public class RechercheController {
     @Autowired
     CotationService cotationService;
 
-    @GetMapping("recherche-spot")
+    @GetMapping("/rechercher-spot")
     public ModelAndView recherche(Model model){
         SpotFormCriterias spotFormCriterias = new SpotFormCriterias();
-        model.addAttribute(spotFormCriterias);
-        return new ModelAndView("recherche-spot");
+        List listCotation =  cotationService.listerCotation();
+        model.addAttribute("spotFormCriterias",spotFormCriterias);
+        model.addAttribute("listCotation",listCotation);
+        return new ModelAndView("rechercher-spot");
     }
 
-    @PostMapping(value = "recherche-spot")
+    @PostMapping(value = "/rechercher-spot")
     public ModelAndView recherchePost(Model model, @ModelAttribute("spotFormCriterias") SpotFormCriterias spotFormCriterias){
-        List cotations =  cotationService.listerCotation();
-        model.addAttribute("listCotation",cotations);
         spotCustomService.multiCriteriaSpotSearch(spotFormCriterias);
         return new ModelAndView("resultat","spotFormCriterias",spotFormCriterias);
     }

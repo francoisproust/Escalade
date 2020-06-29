@@ -1,5 +1,6 @@
 package proust.dev.escalade.services;
 
+import org.springframework.stereotype.Repository;
 import proust.dev.escalade.hibernate.entities.Spot;
 import proust.dev.escalade.services.interfaces.SpotCustomService;
 
@@ -10,6 +11,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class SpotCustomServiceImpl implements SpotCustomService {
     private EntityManager em;

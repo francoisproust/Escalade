@@ -47,11 +47,4 @@ public class SpotController {
         spotService.ajouterSpot(spot);
         return new ModelAndView("spot");
     }
-
-    @GetMapping("/rechercher-spot")
-    public ModelAndView rechercherSpot(Model model){
-
-        return new ModelAndView("rechercher-spot");
-    }
-
 }
