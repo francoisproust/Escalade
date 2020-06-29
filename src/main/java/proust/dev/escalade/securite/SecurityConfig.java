@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/utilisateur/**").authenticated()
                 .antMatchers("/modifier*/**").authenticated()
                 .antMatchers("/suppression*/**").authenticated()
+                .antMatchers("/les-commentaires").authenticated()
                 .anyRequest().permitAll();
     }
     @Bean

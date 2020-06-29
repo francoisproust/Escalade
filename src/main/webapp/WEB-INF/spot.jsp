@@ -11,6 +11,7 @@
     <a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/add-spot")%>">Ajouter un spot</a>
     <a href="<%=request.getContextPath()+response.encodeURL("/creation-compte")%>">Créer un compte</a>
+    <a href="<%=request.getContextPath()+response.encodeURL("/rechercher-spot")%>">Rechercher</a>
 <p>
 <h1 class="logo">
     <img src="css/logo.png">
