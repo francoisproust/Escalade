@@ -1,9 +1,5 @@
 package proust.dev.escalade.services;
 
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.Entity;
-
 
 public class SpotFormCriterias {
     private String localisation = "";

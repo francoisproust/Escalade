@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 public class RechercheController {
+    @Autowired
     SpotCustomService spotCustomService;
     @Autowired
     CotationService cotationService;
@@ -30,12 +31,12 @@ public class RechercheController {
 
     @PostMapping(value = "/rechercher-spot")
     public ModelAndView recherchePost(Model model, @ModelAttribute("spotFormCriterias") SpotFormCriterias spotFormCriterias){
-        spotCustomService.multiCriteriaSpotSearch(spotFormCriterias);
-        return new ModelAndView("resultat","spotFormCriterias",spotFormCriterias);
+        List resultat = spotCustomService.multiCriteriaSpotSearch(spotFormCriterias);
+        return new ModelAndView("resultat","resultat",resultat);
     }
 
     @GetMapping("resultat")
-    public ModelAndView resultat(Model model, @ModelAttribute("spotFormCriterias") SpotFormCriterias spotFormCriterias){
+    public ModelAndView resultat(Model model, @ModelAttribute("resultat") SpotFormCriterias spotFormCriterias){
         return new ModelAndView("resultat");
     }
 
