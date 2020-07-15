@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Mon profil</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
@@ -13,7 +14,7 @@
 </c:if>
 <p>
 <h1 class="logo">
-    <img src="css/logo.png">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
 </h1>
 
 <p>
@@ -24,7 +25,7 @@
 </p>
 <p>
     <U>Mes Topos</U></br>
-    <table>
+    <table class="table">
         <tr>
             <td>Nom</td>
             <td>ISBN</td>
@@ -49,7 +50,7 @@
 </p>
 <p>
     <U>Mes Commentaires</U></br>
-    <table>
+    <table class="table">
         <tr>
             <td>voir le site</td>
             <td>Commentaire</td>

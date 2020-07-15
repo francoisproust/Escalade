@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Les longueurs</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
@@ -14,7 +15,9 @@
 <h1 class="logo">
     <img src="<%=request.getContextPath()%>/css/logo.png">
 </h1>
-<table>
+</p>
+<p>
+<table class="table">
     <tr>
         <td>Voir la voie</td>
         <td>Nom</td>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Topo;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
+import proust.dev.escalade.services.interfaces.CommentaireService;
 import proust.dev.escalade.services.interfaces.TopoService;
 
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.List;
 public class TopoController {
     @Autowired
     private TopoService topoService;
+    @Autowired
+    private CommentaireService commentaireService;
 
     @GetMapping("/topo")
     public ModelAndView listerTopo(Model model){
@@ -44,10 +47,15 @@ public class TopoController {
 
     @GetMapping("/reserver-topo/{topoId}")
     public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId){
+        Authentication utilisateur = SecurityContextHolder.getContext().getAuthentication();
         Topo reserverTopo = topoService.chercherTopo(topoId);
-        System.out.println(reserverTopo.toString());
         topoService.topoReservation(reserverTopo);
-        return listerTopo(null);
+        List listeTopo = topoService.listerTopoParUtilisateur((Utilisateur) utilisateur.getPrincipal());
+        List commentaires = commentaireService.listerCommentaire((Utilisateur) utilisateur.getPrincipal());
+        model.addAttribute("commentaire",commentaires);
+        model.addAttribute("utilisateur",(Utilisateur) utilisateur.getPrincipal());
+        model.addAttribute("topos",listeTopo);
+        return new ModelAndView("mon-profil");
     }
 
 

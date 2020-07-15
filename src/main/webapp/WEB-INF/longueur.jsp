@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>longueur</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
@@ -18,7 +19,7 @@
 </p>
 <p>
 <h1 class="logo">
-    <img src="css/logo.png">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
 </h1>
 <table>
     <tr>

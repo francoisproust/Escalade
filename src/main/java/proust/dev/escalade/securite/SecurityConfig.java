@@ -56,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/modifier*/**").authenticated()
                 .antMatchers("/suppression*/**").authenticated()
                 .antMatchers("/les-commentaires").authenticated()
+                .antMatchers("/reserver-topo*/**").authenticated()
                 .anyRequest().permitAll();
     }
     @Bean

@@ -6,15 +6,16 @@
 <html>
 <head>
     <title>Liste des Topos</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <a href="<%=request.getContextPath()+response.encodeURL("/")%>">Accueil</a>
 <p>
 <h1 class="logo">
-    <img src="css/logo.png">
+    <img src="<%=request.getContextPath()%>/css/logo.png">
 </h1>
-<table>
+<table class="table">
     <tr>
         <td>Nom</td>
         <td>ISBN</td>

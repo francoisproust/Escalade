@@ -4,9 +4,12 @@ body
     opacity: 10;
 }
 
-p,h1,a,table
+p,h1,a,table,article,footer, .table
 {
-    color: white; /* Les paragraphes seront en bleu */
+    color: white;
+}
+a{
+    text-decoration: underline;
 }
 table {
     border-width:2px;
@@ -23,7 +26,8 @@ td {
     width:auto;
     text-align:center;
 }
-h1{
+h1
+{
     text-align:center;
 }
 

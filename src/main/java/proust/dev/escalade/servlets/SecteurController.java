@@ -44,6 +44,6 @@ public class SecteurController {
     @PostMapping(value = "/add-secteur/{spotId}")
     public ModelAndView ajouterSecteurPost(Model model, @ModelAttribute("secteur") Secteur secteur,@PathVariable Integer spotId) {
         secteurService.ajouterSecteur(secteur, spotId);
-        return voirSecteurParSpotId(null,spotId);
+        return voirSecteurParSpotId(model,spotId);
     }
 }

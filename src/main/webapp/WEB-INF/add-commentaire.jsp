@@ -5,18 +5,24 @@
 <html>
 <head>
     <title>Ajouter commentaire</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
 <h1 class="logo">
     <img src="<%=request.getContextPath()%>/css/logo.png">
 </h1>
-<form:form method="POST" modelAttribute="commentaire" action="./${spotId}">
-    <form:input type="text" path="description" class="form-control form-control-sm mb-3" placeholder="Commentaire"
-                autofocus="true"/>
-
-    <input type="submit" class="btn btn-success" value="Ajouter"/>
-    <input type="reset" class="btn btn-danger" value="Reset"/>
-    <a class="btn btn-danger" href="./">Cancel</a>
-</form:form>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <form:form method="POST" modelAttribute="commentaire" action="./${spotId}">
+                <form:input type="text" path="description" class="form-control form-control-sm mb-3" placeholder="Commentaire"
+                            autofocus="true"/>
+                <input type="submit" class="btn btn-success" value="Valider mon commentaire"/>
+                <input type="reset" class="btn btn-danger" value="Reset"/>
+                <a class="btn btn-warning" href="http://localhost:8080/Escalade/voir-secteur/${spotId}">Cancel</a>
+            </form:form>
+        </div>
+    </div>
+</div>
 </body>

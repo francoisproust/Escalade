@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>${voirSpot.nom}</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
@@ -14,7 +15,7 @@
 </p>
 <p>
 <h1>${voirSpot.nom}</h1>
-<table>
+<table class="table">
     <tr>
         <td>Nom</td>
         <td>Localisation</td>

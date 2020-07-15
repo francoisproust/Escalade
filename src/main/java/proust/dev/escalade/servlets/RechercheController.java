@@ -34,11 +34,4 @@ public class RechercheController {
         List resultat = spotCustomService.multiCriteriaSpotSearch(spotFormCriterias);
         return new ModelAndView("resultat","resultat",resultat);
     }
-
-    @GetMapping("resultat")
-    public ModelAndView resultat(Model model, @ModelAttribute("resultat") SpotFormCriterias spotFormCriterias){
-        return new ModelAndView("resultat");
-    }
-
-
 }

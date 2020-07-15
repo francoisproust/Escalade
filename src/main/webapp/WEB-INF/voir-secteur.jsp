@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Les secteurs</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 </head>
 <body>
@@ -20,7 +21,7 @@
 </p>
 <p>
     <U>Liste des secteurs du site:</U></br></br>
-    <table>
+    <table class="table">
         <tr>
             <td>Spot</td>
             <td>Nom</td>
@@ -40,7 +41,7 @@
 <p>
     <U>Commentaires:</U></br>
     </br>
-    <table>
+    <table class="table">
         <tr>
             <td>Date</td>
             <td>Commentaire</td>
