@@ -27,6 +27,14 @@
 
                 <form:input type="text" path="password" class="form-control form-control-sm mb-3"
                             placeholder="Mot De Passe"/>
+                <p>
+                Membre de l'association:</br>
+                <form:select path="typeUser">
+                    <c:forEach items="${listeUser}" var= "typeUser">
+                        <form:option value="${typeUser.typeId}">${typeUser.libelleUser}</form:option></br>
+                    </c:forEach>
+                </form:select>
+                </p>
                 <input type="submit" class="btn btn-success" value="Créer compte"/>
                 <input type="reset" class="btn btn-danger" value="Reset"/>
                 <a class="btn btn-warning" href="./">Cancel</a>

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import proust.dev.escalade.hibernate.dao.TypeUserDao;
 import proust.dev.escalade.hibernate.dao.UtilisateurDao;
 import proust.dev.escalade.hibernate.entities.TypeUser;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
@@ -18,6 +19,8 @@ import java.util.Optional;
 public class UtilisateurServiceImpl implements UtilisateurService {
     @Autowired
     UtilisateurDao utilisateurDao;
+    @Autowired
+    TypeUserDao typeUserDao;
 
     public List listerUtilisateur(){
         List listerUtilisateur = new ArrayList();
@@ -27,11 +30,13 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public void ajouterUtilisateur(Utilisateur utilisateur) {
-        TypeUser typeUser = new TypeUser();
-        typeUser.setTypeId(1);
+        if (utilisateur.getTypeUser().getTypeId().equals(2)){
+            TypeUser typeUser = new TypeUser();
+            typeUser = typeUserDao.findTypeUserByTypeId(3);
+            utilisateur.setTypeUser(typeUser);
+        }
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
-        utilisateur.setTypeUser(typeUser);
         utilisateurDao.save(utilisateur);
     }
 

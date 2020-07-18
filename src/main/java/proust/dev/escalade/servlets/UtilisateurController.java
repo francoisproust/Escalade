@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import proust.dev.escalade.hibernate.entities.Utilisateur;
+import proust.dev.escalade.services.interfaces.TypeUserService;
 import proust.dev.escalade.services.interfaces.UtilisateurService;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class UtilisateurController {
     List listeUtilisateur ;
     @Autowired
     UtilisateurService utilisateurService;
+    @Autowired
+    TypeUserService typeUserService;
 
     @GetMapping(value = "/utilisateur")
     public ModelAndView listerUtilisateur(Model model) {
@@ -30,11 +33,14 @@ public class UtilisateurController {
 
     @GetMapping(value = "/creation-compte")
     public ModelAndView creationCompte(Model model) {
+        List listeTypeUser = typeUserService.listerTypeUser();
+        model.addAttribute("listeUser",listeTypeUser);
         model.addAttribute("utilisateur",new Utilisateur());
         return new ModelAndView("creation-compte");
     }
     @PostMapping(value = "/creation-compte")
     public ModelAndView creationComptePost(Model model, @ModelAttribute("utilisateur") Utilisateur utilisateur) {
+
         utilisateurService.ajouterUtilisateur(utilisateur);
         return new ModelAndView("home" );
     }
