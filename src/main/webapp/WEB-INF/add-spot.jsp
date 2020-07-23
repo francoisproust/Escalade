@@ -28,8 +28,10 @@
                 <form:input type="text" path="secteurs" class="form-control form-control-sm mb-3"
                             placeholder="Nombre de secteurs"/>
                 <p>
-                    Membre de l'association:
-                    <form:checkbox path="flagAsso" value="oui" placeholder="Flag Association"/>
+                    <c:if test="${type == 'administrateur' || type == 'amis'}">
+                        Membre de l'association:
+                        <form:checkbox path="flagAsso" value="oui" placeholder="Flag Association"/>
+                    </c:if>
                 </p>
                 <input type="submit" class="btn btn-success" value="Ajouter"/>
                 <input type="reset" class="btn btn-danger" value="Reset"/>

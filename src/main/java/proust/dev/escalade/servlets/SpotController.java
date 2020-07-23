@@ -36,7 +36,11 @@ public class SpotController {
 
     @GetMapping("/add-spot")
     public ModelAndView ajouterSpot(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+        String type_user = utilisateur.getTypeUser().getLibelleUser();
         model.addAttribute("spot", new Spot());
+        model.addAttribute("type",type_user);
         return new ModelAndView("add-spot");
     }
 
