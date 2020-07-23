@@ -33,6 +33,7 @@
             <td>Parution</td>
             <td>Disponible</td>
             <td>valider la réservation</td>
+            <td>rendre disponible</td>
         </tr>
         <c:forEach items="${topos}" var="listerTopo">
             <tr>
@@ -43,6 +44,11 @@
                 <td>
                     <c:if test="${listerTopo.disponibilite == 'En attente'}">
                         <a href="<%=request.getContextPath()+response.encodeURL("/reserver-topo")%>/${listerTopo.topoId}">valider</a>
+                    </c:if>
+                </td>
+                <td>
+                    <c:if test="${listerTopo.disponibilite == 'En attente' || listerTopo.disponibilite == 'Réservé' }">
+                        <a href="<%=request.getContextPath()+response.encodeURL("/dispo-topo")%>/${listerTopo.topoId}">valider</a>
                     </c:if>
                 </td>
             </tr>

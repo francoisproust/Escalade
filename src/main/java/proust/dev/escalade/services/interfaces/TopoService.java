@@ -10,7 +10,7 @@ public interface TopoService {
     List listerTopo();
     void ajouterTopo(Topo topo);
     Topo chercherTopo(Integer topoId);
-    void topoReservation(Topo topo);
+    String topoReservation(Topo topo);
     List listerTopoParUtilisateur(Utilisateur utilisateur);
 
 }

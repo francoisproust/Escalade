@@ -49,7 +49,29 @@ public class TopoController {
     public ModelAndView reserverTopo(Model model, @PathVariable Integer topoId){
         Authentication utilisateur = SecurityContextHolder.getContext().getAuthentication();
         Topo reserverTopo = topoService.chercherTopo(topoId);
-        topoService.topoReservation(reserverTopo);
+        String dispo = topoService.topoReservation(reserverTopo);
+        if(dispo == "En attente"){
+            Topo topo = topoService.chercherTopo(topoId);
+            String email = topo.getUtilisateur().getEmail();
+            model.addAttribute("email",email);
+            return new ModelAndView("contact");
+        }else if (dispo == "Réservé"){
+            List listeTopo = topoService.listerTopoParUtilisateur((Utilisateur) utilisateur.getPrincipal());
+            List commentaires = commentaireService.listerCommentaire((Utilisateur) utilisateur.getPrincipal());
+            model.addAttribute("commentaire",commentaires);
+            model.addAttribute("utilisateur",(Utilisateur) utilisateur.getPrincipal());
+            model.addAttribute("topos",listeTopo);
+            return new ModelAndView("mon-profil");
+
+        }
+        return null;
+    }
+    @GetMapping("/dispo-topo/{topoId}")
+    public ModelAndView dispoTopo(Model model,@PathVariable Integer topoId){
+        Authentication utilisateur = SecurityContextHolder.getContext().getAuthentication();
+        Topo topo = topoService.chercherTopo(topoId);
+        topo.setDisponibilite("dipsonible");
+        topoService.ajouterTopo(topo);
         List listeTopo = topoService.listerTopoParUtilisateur((Utilisateur) utilisateur.getPrincipal());
         List commentaires = commentaireService.listerCommentaire((Utilisateur) utilisateur.getPrincipal());
         model.addAttribute("commentaire",commentaires);
@@ -57,7 +79,4 @@ public class TopoController {
         model.addAttribute("topos",listeTopo);
         return new ModelAndView("mon-profil");
     }
-
-
-
 }
