@@ -2,6 +2,7 @@
 package proust.dev.escalade.servlets;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,13 @@ public class SpotController {
     private SpotService spotService;
 
     @GetMapping("/spot")
-    public ModelAndView listerSpot(Model model){
+    public ModelAndView listerSpot(Model model) {
+        model.addAttribute("user","nonconecte");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+            model.addAttribute("user","connecte");
+        }
         List listerSpot = spotService.listerSpot();
         return new ModelAndView("spot","listerSpot",listerSpot);
     }
@@ -32,6 +39,14 @@ public class SpotController {
         model.addAttribute("spotId",spotId);
         model.addAttribute("voirSpot",voirSpot);
         return new ModelAndView("voir-spot");
+    }
+
+    @GetMapping("/tagguer-membre/{spotId}")
+    public ModelAndView tagguerSpot(Model model,@PathVariable Integer spotId){
+        Spot voirSpot = spotService.voirSpot(spotId);
+        voirSpot.setFlagAsso(true);
+        spotService.ajouterSpot(voirSpot);
+        return listerSpot(null);
     }
 
     @GetMapping("/add-spot")

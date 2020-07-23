@@ -23,11 +23,12 @@
         <td>Nom</td>
         <td>Localisation</td>
         <td>Descriptif</td>
-        <td>flagAsso</td>
+        <td>Taggué Spot association</td>
         <td>utilisateur</td>
         <td>voir les secteurs</td>
         <td>ajouter secteur</td>
         <td>topos</td>
+        <td>tagguer membre de l'association</td>
     </tr>
     <c:forEach items="${listerSpot}" var="listerSpot">
         <tr>
@@ -39,6 +40,13 @@
             <td><a href="<%=request.getContextPath()+response.encodeURL("/voir-secteur")%>/${listerSpot.spotId}">ici</a></td>
             <td><a href="<%=request.getContextPath()+response.encodeURL("/add-secteur")%>/${listerSpot.spotId}">ici</a></td>
             <td>${listerSpot.topos}</td>
+            <td>
+                <c:if test="${user == 'connecte'}">
+                    <c:if test="${listerSpot.flagAsso == false}">
+                        <a href="<%=request.getContextPath()+response.encodeURL("/tagguer-membre")%>/${listerSpot.spotId}">ici</a>
+                    </c:if>
+                </c:if>
+            </td>
         </tr>
     </c:forEach>
 </table>
